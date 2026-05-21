@@ -375,6 +375,42 @@
     display:flex;justify-content:center;gap:14px;margin-top:36px;flex-wrap:wrap;
   }
   .waitlist-cta{height:50px;padding:0 28px;font-size:15.5px;border-radius:12px}
+  /* hero countdown */
+  .countdown{
+    margin:22px auto 0;display:inline-flex;align-items:stretch;gap:10px;
+    padding:14px 18px;border-radius:16px;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(47,125,251,.15);
+    box-shadow:0 14px 30px -16px rgba(47,125,251,.35);
+  }
+  .countdown .cd-label{
+    display:flex;flex-direction:column;justify-content:center;
+    padding-right:14px;border-right:1px solid rgba(47,125,251,.18);
+    text-align:left;
+  }
+  .countdown .cd-label .lt{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .countdown .cd-label .lb{font-size:13px;font-weight:700;color:var(--ink);margin-top:2px}
+  .cd-cells{display:flex;gap:8px}
+  .cd-cell{
+    min-width:54px;padding:6px 10px 8px;border-radius:10px;
+    background:linear-gradient(180deg,#0E1330 0%,#1A2452 100%);
+    color:#fff;text-align:center;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 4px 10px rgba(14,16,32,.18);
+    position:relative;overflow:hidden;
+  }
+  .cd-cell .v{font-size:22px;font-weight:800;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;line-height:1.1}
+  .cd-cell .u{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+  .cd-cell::before{
+    content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(255,255,255,.06);
+  }
+  .countdown.launched .cd-cells{display:none}
+  .countdown.launched .cd-label .lt{color:#1F8A5B}
+  @media (max-width:520px){
+    .countdown{flex-direction:column;align-items:center;gap:12px}
+    .cd-cell{min-width:48px}
+    .countdown .cd-label{padding-right:0;border-right:none;text-align:center;border-bottom:1px solid rgba(47,125,251,.18);padding-bottom:8px}
+  }
   .store-btn{
     display:inline-flex;align-items:center;gap:10px;
     padding:13px 22px;border-radius:10px;font-weight:600;font-size:14.5px;
@@ -1025,6 +1061,18 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
+    <div class="countdown" id="launchCountdown" data-launch="2026-06-15T00:00:00" aria-live="polite">
+      <div class="cd-label">
+        <span class="lt">Launching</span>
+        <span class="lb">June 15, 2026</span>
+      </div>
+      <div class="cd-cells">
+        <div class="cd-cell"><div class="v" data-cd="d">00</div><div class="u">Days</div></div>
+        <div class="cd-cell"><div class="v" data-cd="h">00</div><div class="u">Hrs</div></div>
+        <div class="cd-cell"><div class="v" data-cd="m">00</div><div class="u">Min</div></div>
+        <div class="cd-cell"><div class="v" data-cd="s">00</div><div class="u">Sec</div></div>
+      </div>
+    </div>
 
     <div class="hero-tiles" data-parallax>
       <div class="tile"><img src="tile-1-transactions.png" alt="Transactions panel" /></div>
@@ -1569,6 +1617,40 @@
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // launch countdown
+  (function(){
+    const el = document.getElementById('launchCountdown');
+    if (!el) return;
+    const target = new Date(el.dataset.launch + '+01:00').getTime(); // WAT (Lagos)
+    const dEl = el.querySelector('[data-cd="d"]');
+    const hEl = el.querySelector('[data-cd="h"]');
+    const mEl = el.querySelector('[data-cd="m"]');
+    const sEl = el.querySelector('[data-cd="s"]');
+    const lt = el.querySelector('.lt');
+    const lb = el.querySelector('.lb');
+    const pad = (n) => String(n).padStart(2,'0');
+    const tick = () => {
+      const diff = target - Date.now();
+      if (diff <= 0) {
+        el.classList.add('launched');
+        lt.textContent = "We're live";
+        lb.textContent = 'Welcome to KclautX';
+        clearInterval(timer);
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      dEl.textContent = pad(d);
+      hEl.textContent = pad(h);
+      mEl.textContent = pad(m);
+      sEl.textContent = pad(s);
+    };
+    tick();
+    const timer = setInterval(tick, 1000);
   })();
 
   // waitlist form
