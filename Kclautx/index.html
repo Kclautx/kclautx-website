@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KclautX — Your Trusted Exchange for Crypto, Giftcards & Bills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="modern.css">
+<style>
+  :root{
+    --blue:#2F7DFB;
+    --blue-600:#1F6BE8;
+    --blue-700:#1858CC;
+    --blue-50:#EAF1FE;
+    --ink:#0E0E10;
+    --ink-2:#1F2024;
+    --muted:#6B7280;
+    --line:#E7EAEE;
+    --bg:#FFFFFF;
+    --soft:#F7F9FC;
+    --cream:#F8E9C5;
+    --softblue:#C9DEFF;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    line-height:1.5;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+  /* ============ MODERN LAYER ============ */
+  /* cursor glow */
+  .cursor-glow{
+    position:fixed;left:0;top:0;pointer-events:none;z-index:9999;
+    width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle, rgba(47,125,251,.18) 0%, rgba(47,125,251,.06) 35%, transparent 70%);
+    transform:translate(-50%,-50%);
+    transition:opacity .3s, transform .15s ease-out;
+    mix-blend-mode:multiply;opacity:0;
+  }
+  .cursor-glow.on{opacity:1}
+  @media (hover:none){.cursor-glow{display:none}}
+
+  /* hero ambient mesh */
+  .hero{position:relative;isolation:isolate;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:-20% -10% auto -10%;height:120%;
+    background:
+      radial-gradient(40% 35% at 18% 20%, rgba(47,125,251,.18), transparent 60%),
+      radial-gradient(35% 30% at 82% 12%, rgba(160, 102, 255,.16), transparent 60%),
+      radial-gradient(30% 25% at 50% 0%, rgba(255,170,90,.12), transparent 60%);
+    z-index:-1;
+    animation:meshDrift 18s ease-in-out infinite alternate;
+  }
+  @keyframes meshDrift{
+    0%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(2%,1.5%) scale(1.04)}
+    100%{transform:translate(-2%,-1%) scale(1.02)}
+  }
+
+  /* gradient text accent on H1 second line */
+  .hero h1 .grad-accent{
+    background:linear-gradient(100deg,#2F7DFB 0%,#8B5CF6 55%,#2F7DFB 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradShift 6s ease-in-out infinite;
+  }
+  @keyframes gradShift{
+    0%,100%{background-position:0 0}
+    50%{background-position:100% 0}
+  }
+
+  /* hero stats strip */
+  .hero-stats{
+    display:flex;justify-content:center;gap:48px;
+    margin:38px auto 0;flex-wrap:wrap;max-width:720px;
+  }
+  .stat{text-align:center;min-width:120px}
+  .stat .n{
+    font-size:32px;font-weight:800;letter-spacing:-0.02em;
+    background:linear-gradient(135deg,#0E0E10,#2F7DFB);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .stat .l{display:block;margin-top:4px;color:var(--muted);font-size:13px;font-weight:500}
+
+  /* parallax tiles */
+  .hero-tiles .tile{transition:transform .8s cubic-bezier(.2,.7,.2,1), box-shadow .5s; will-change:transform}
+  .hero-tiles[data-parallax] .tile{transform:translate3d(0, var(--py,0px), 0)}
+
+  /* glassmorphic feature cards */
+  .feat{
+    background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.4));
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.6);
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset, 0 8px 24px rgba(14,16,32,.06);
+    position:relative;overflow:hidden;
+  }
+  .feat::before{
+    content:"";position:absolute;inset:-1px;border-radius:inherit;
+    background:linear-gradient(135deg,rgba(47,125,251,.4),transparent 40%,transparent 60%,rgba(139,92,246,.4));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+    padding:1px;opacity:0;transition:opacity .4s;
+    pointer-events:none;
+  }
+  .feat:hover::before{opacity:1}
+
+  /* features section gradient backdrop */
+  .features{position:relative;isolation:isolate}
+  .features::before{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:
+      radial-gradient(50% 40% at 0% 30%, rgba(47,125,251,.06), transparent 60%),
+      radial-gradient(50% 40% at 100% 70%, rgba(139,92,246,.06), transparent 60%);
+  }
+
+  /* steps section ambient orbs */
+  .steps{position:relative;isolation:isolate}
+  .steps .orb{
+    position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;
+    pointer-events:none;
+  }
+  .steps .orb.a{width:300px;height:300px;background:#7AB0FF;left:-80px;top:60px;animation:orbFloat 9s ease-in-out infinite}
+  .steps .orb.b{width:240px;height:240px;background:#A985FF;right:-60px;bottom:-40px;animation:orbFloat 11s ease-in-out infinite -3s}
+  @keyframes orbFloat{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(20px,-30px) scale(1.1)}
+  }
+
+  /* magnetic CTA buttons */
+  .magnet{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+
+  /* section-head h2 gradient sweep */
+  .section-head h2{
+    background:linear-gradient(100deg,#0E0E10 30%, #2F7DFB 50%, #0E0E10 70%);
+    background-size:200% 100%;background-position:100% 0;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    transition:background-position 1.4s ease;
+  }
+  .section-head.in h2{background-position:0 0}
+
+  /* testimonial card glassmorph */
+  .quote-stage{
+    position:relative;
+    background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.25));
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  }
+
+  /* security card cream gradient mesh */
+  .sec-card.cream{
+    background:
+      radial-gradient(80% 60% at 20% 0%, rgba(255,255,255,.6), transparent 60%),
+      var(--cream-bg, #F1ECDF);
+    position:relative;overflow:hidden;
+  }
+
+  /* dot grid bg pattern utility */
+  .dot-grid{
+    background-image:radial-gradient(rgba(14,16,32,.07) 1px, transparent 1px);
+    background-size:22px 22px;
+  }
+
+  /* ============ ANIMATIONS ============ */
+  /* scroll reveal */
+  [data-reveal]{
+    opacity:0;transform:translateY(28px);
+    transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+    transition-delay:var(--rd, 0ms);
+    will-change:opacity,transform;
+  }
+  [data-reveal="left"]{transform:translateX(-32px)}
+  [data-reveal="right"]{transform:translateX(32px)}
+  [data-reveal="zoom"]{transform:scale(.94)}
+  [data-reveal="blur"]{filter:blur(8px)}
+  [data-reveal].in{opacity:1;transform:none;filter:none}
+
+  /* hero collage cascade */
+  .hero-tiles .tile{
+    opacity:0;transform:translateY(40px) scale(.96);
+    animation:tileIn .9s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero-tiles .tile-tx{animation-delay:.15s}
+  .hero-tiles .tile-photo{animation-delay:.30s}
+  .hero-tiles .tile-cream{animation-delay:.45s}
+  .hero-tiles .tile-gift{animation-delay:.60s}
+  .hero-tiles .tile-sec{animation-delay:.75s}
+  @keyframes tileIn{
+    to{opacity:1;transform:translateY(0) scale(1)}
+  }
+  .hero-tiles .tile{
+    transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s;
+  }
+  .hero-tiles .tile:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+    z-index:2;
+  }
+
+  /* hero headline shimmer on load */
+  .hero h1{
+    background:linear-gradient(90deg,#0E0E10 0%,#0E0E10 40%,#2F7DFB 50%,#0E0E10 60%,#0E0E10 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:headlineShimmer 2.4s ease-out .2s 1 forwards;
+  }
+  @keyframes headlineShimmer{
+    from{background-position:100% 0}
+    to{background-position:0 0}
+  }
+
+  /* feature cards lift */
+  .feat{
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s;
+  }
+  .feat:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(47,125,251,.12);
+    border-color:rgba(47,125,251,.35);
+  }
+  .feat .num{transition:color .3s, transform .3s}
+  .feat:hover .num{color:var(--blue);transform:scale(1.08)}
+
+  /* role cards */
+  .role{transition:transform .3s, background .3s}
+  .role:hover{transform:translateY(-4px)}
+
+  /* security cards */
+  .sec-card{transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s}
+  .sec-card:hover{transform:translateY(-6px) scale(1.01)}
+  .sec-card.cream:hover .shield-graphic{transform:rotate(-6deg) scale(1.06)}
+  .shield-graphic{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+
+  /* community photos */
+  .com-photo,.sup-photo{transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+  .com-photo:hover,.sup-photo:hover{transform:translateY(-6px) scale(1.015)}
+  .com-photo img,.sup-photo img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .com-photo:hover img,.sup-photo:hover img{transform:scale(1.08)}
+
+  /* primary buttons */
+  .btn-primary{position:relative;overflow:hidden;transition:transform .25s, box-shadow .25s, background .25s}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(47,125,251,.35)}
+  .btn-primary:active{transform:translateY(0)}
+  .btn-primary::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.35) 50%,transparent 100%);
+    transform:translateX(-120%);transition:transform .8s;
+    pointer-events:none;
+  }
+  .btn-primary:hover::after{transform:translateX(120%)}
+
+  /* store buttons */
+  .store-btn{transition:transform .25s, box-shadow .25s, background .25s}
+  .store-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.25)}
+
+  /* nav glass on scroll */
+  .nav.scrolled{
+    background:rgba(255,255,255,.78);
+    backdrop-filter:saturate(180%) blur(14px);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    box-shadow:0 1px 0 rgba(0,0,0,.06);
+  }
+  .nav{transition:background .3s, box-shadow .3s}
+
+  /* CTA phones float */
+  .cta-phones .mini-phone{animation:floatY 6s ease-in-out infinite}
+  .cta-phones .mini-phone.center{animation-delay:-2s;animation-duration:5.4s}
+  .cta-phones .mini-phone.right{animation-delay:-3.6s;animation-duration:6.6s}
+  @keyframes floatY{
+    0%,100%{transform:translateY(40px)}
+    50%{transform:translateY(28px)}
+  }
+  .cta-phones .mini-phone.center{animation-name:floatYCenter}
+  @keyframes floatYCenter{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+  }
+
+  /* testimonial fade already exists; add subtle rise */
+  #quoteText.fade{transform:translateY(6px)}
+  #quoteText{transition:opacity .25s, transform .25s}
+
+  /* steps phone gentle bob */
+  .phone-img{animation:floatPhone 7s ease-in-out infinite}
+  @keyframes floatPhone{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+  }
+
+  /* security shield gentle rotate idle */
+  .sec-card.cream .shield-graphic{animation:shieldIdle 8s ease-in-out infinite}
+  @keyframes shieldIdle{
+    0%,100%{transform:rotate(-2deg)}
+    50%{transform:rotate(3deg)}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{
+      animation-duration:.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:.01ms !important;
+    }
+    [data-reveal]{opacity:1 !important;transform:none !important;filter:none !important}
+  }
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .2s;
+  }
+  .nav.scrolled{border-bottom-color:var(--line)}
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    display:inline-flex;align-items:center;
+  }
+  .logo img{
+    height:28px;width:auto;display:block;
+  }
+  .nav-links{
+    display:flex;align-items:center;gap:36px;
+  }
+  .nav-links a{
+    color:var(--ink);font-weight:500;font-size:15px;
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:var(--blue)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:11px 22px;border-radius:8px;
+    font-weight:600;font-size:14.5px;
+    transition:transform .12s ease,background .15s ease,box-shadow .15s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{
+    background:var(--blue);color:#fff;
+    box-shadow:0 1px 2px rgba(47,125,251,.25);
+  }
+  .btn-primary:hover{background:var(--blue-600)}
+  .btn-ghost{color:var(--ink)}
+
+  /* ============ HERO ============ */
+  .hero{padding:64px 0 0;text-align:center;position:relative}
+  .hero h1{
+    font-size:clamp(38px,5.4vw,68px);
+    line-height:1.05;
+    letter-spacing:-0.025em;
+    font-weight:800;
+    margin:0 auto;
+    max-width:920px;
+  }
+  .hero p.lede{
+    margin:24px auto 0;max-width:560px;
+    color:#4B5260;font-size:16px;line-height:1.65;
+  }
+  .download-row{
+    display:flex;justify-content:center;gap:14px;margin-top:36px;flex-wrap:wrap;
+  }
+  .waitlist-cta{height:50px;padding:0 28px;font-size:15.5px;border-radius:12px}
+  .store-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:13px 22px;border-radius:10px;font-weight:600;font-size:14.5px;
+    transition:transform .12s,background .15s,box-shadow .15s;
+  }
+  .store-btn:active{transform:translateY(1px)}
+  .store-btn.play{background:var(--blue);color:#fff}
+  .store-btn.play:hover{background:var(--blue-600)}
+  .store-btn.app{background:#EFF1F4;color:var(--ink)}
+  .store-btn.app:hover{background:#E5E8ED}
+
+  .hero-tiles{
+    margin-top:68px;
+    display:grid;
+    grid-template-columns:1.05fr 1fr 1.35fr 1fr 1.05fr;
+    gap:18px;
+    align-items:end;
+  }
+  .tile{
+    transition:transform .25s ease;
+    display:block;
+  }
+  .tile:hover{transform:translateY(-4px)}
+  .tile img{width:100%;height:auto;display:block}
+  .tile-tx{
+    background:#0E0E10;color:#fff;
+    padding:22px 20px;
+    aspect-ratio: 0.78;
+    display:flex;flex-direction:column;
+  }
+  .tile-tx h3{margin:0 0 16px;font-size:15px;font-weight:600}
+  .tx-row{
+    display:flex;align-items:center;gap:10px;
+    padding:8px 0;
+    font-size:11px;
+  }
+  .tx-row.active{
+    background:rgba(255,255,255,0.06);
+    margin:0 -10px;padding:8px 10px;border-radius:8px;
+  }
+  .coin{
+    width:22px;height:22px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:11px;font-weight:700;flex-shrink:0;
+  }
+  .tx-info{flex:1;line-height:1.2}
+  .tx-info b{display:block;font-weight:600;font-size:11px}
+  .tx-info span{color:#7B7E86;font-size:9.5px}
+  .tx-amt{text-align:right;line-height:1.2}
+  .tx-amt b{display:block;font-weight:600;font-size:10.5px}
+  .tx-amt .pos{color:#22C55E;font-size:9.5px;font-weight:600}
+  .tx-amt .neg{color:#EF4444;font-size:9.5px;font-weight:600}
+
+  .tile-photo{
+    aspect-ratio:0.85;
+    background:linear-gradient(135deg,#d9c9b8,#b8967a);
+    position:relative;overflow:hidden;
+  }
+  .tile-photo .ph-label{
+    position:absolute;inset:auto 0 0 0;padding:10px;
+    font:500 10px/1 ui-monospace,Menlo,monospace;
+    color:rgba(255,255,255,.85);
+    background:linear-gradient(transparent,rgba(0,0,0,.4));
+  }
+
+  .tile-cream{
+    background:#F8E9C5;
+    aspect-ratio:1.05;
+    padding:26px 24px;
+    display:flex;align-items:flex-end;
+    font-size:18px;font-weight:700;line-height:1.25;
+    letter-spacing:-0.01em;
+  }
+
+  .tile-giftcards{
+    background:#C9DEFF;
+    aspect-ratio:1.05;
+    padding:18px 16px;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .tile-giftcards h4{margin:0 0 4px;font-size:14px;font-weight:700;color:var(--ink)}
+  .gc-card{
+    background:#fff;border-radius:10px;
+    padding:8px 10px;display:flex;align-items:center;gap:10px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04);
+  }
+  .gc-logo{
+    width:38px;height:30px;border-radius:6px;
+    background:#0E0E10;color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:9px;font-weight:700;flex-shrink:0;
+  }
+  .gc-meta{flex:1;font-size:10px;line-height:1.3}
+  .gc-meta b{display:block;font-weight:600;font-size:11px}
+  .gc-buy{
+    background:var(--blue);color:#fff;
+    padding:5px 12px;border-radius:14px;
+    font-size:10.5px;font-weight:600;
+  }
+
+  .tile-security{
+    aspect-ratio:0.78;
+    background:linear-gradient(135deg,#7d6e63,#3d3833);
+    position:relative;overflow:hidden;
+    color:#fff;padding:22px;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .tile-security h3{
+    margin:0;font-size:18px;font-weight:700;
+    line-height:1.25;letter-spacing:-0.01em;max-width:160px;
+  }
+  .sec-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:9px 16px;border-radius:30px;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.22);
+    font-size:11.5px;font-weight:600;
+    width:fit-content;
+  }
+
+  /* ============ GIFTCARD STRIP ============ */
+  .strip{padding:80px 0 80px;border-top:1px solid var(--line);margin-top:80px;overflow:hidden}
+  .strip h2{
+    text-align:center;margin:0 0 40px;
+    font-size:22px;font-weight:500;color:#3A3F47;
+  }
+  .marquee{
+    position:relative;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+            mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+  }
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    gap:80px;
+    animation:marquee 38s linear infinite;
+  }
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes marquee{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+  }
+  .gl{
+    flex-shrink:0;
+    height:44px;
+    display:inline-flex;align-items:center;justify-content:center;
+    color:#0E0E10;opacity:.85;
+    transition:opacity .2s;
+    font-weight:800;font-size:28px;letter-spacing:-0.04em;
+  }
+  .gl:hover{opacity:1}
+  .gl-google{font-family:'Inter';letter-spacing:-0.03em}
+  .gl-google span:nth-child(1){color:#4285F4}
+  .gl-google span:nth-child(2){color:#EA4335}
+  .gl-google span:nth-child(3){color:#FBBC05}
+  .gl-google span:nth-child(4){color:#4285F4}
+  .gl-google span:nth-child(5){color:#34A853}
+  .gl-google span:nth-child(6){color:#EA4335}
+  .gl-amazon{
+    display:inline-flex;flex-direction:column;align-items:center;line-height:1;
+    font-family:'Inter';font-weight:700;font-size:30px;letter-spacing:-0.03em;
+  }
+  .gl-amazon .swoosh{
+    margin-top:-2px;width:90px;height:14px;
+  }
+  .gl-nike{
+    display:inline-flex;align-items:flex-end;gap:4px;line-height:1;
+  }
+  .gl-nike .swoosh{width:64px;height:26px}
+  .gl-nike .sb{
+    font-style:italic;font-weight:900;font-size:14px;letter-spacing:-0.04em;
+    transform:translateY(-3px);
+  }
+
+  /* ============ FEATURES ============ */
+  .features{padding:64px 0 100px}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 56px}
+  .section-head h2{
+    margin:0;font-size:38px;font-weight:800;letter-spacing:-0.025em;
+  }
+  .section-head p{margin:14px auto 0;color:var(--muted);font-size:16px}
+  .feat-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:0;
+  }
+  .feat{
+    padding:6px 28px 8px;
+    border-left:1px solid var(--line);
+  }
+  .feat .num{
+    color:var(--blue);font-weight:700;font-size:18px;
+    margin-bottom:14px;letter-spacing:-0.01em;
+  }
+  .feat h3{margin:0 0 8px;font-size:18px;font-weight:700;letter-spacing:-0.01em}
+  .feat p{margin:0;color:#5B6271;font-size:14px;line-height:1.6}
+  .feat-grid > .feat:nth-child(n+4){padding-top:36px}
+  .feat-grid > .feat:nth-child(-n+3){padding-bottom:36px;border-bottom:0}
+
+  /* ============ STEPS ============ */
+  .steps{
+    background:linear-gradient(180deg,#3D7BF8 0%,#2F6EE8 100%);
+    color:#fff;padding:90px 0 80px;
+    position:relative;overflow:hidden;
+  }
+  .steps::before{
+    content:"";position:absolute;right:-120px;top:80px;
+    width:520px;height:520px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.12);
+  }
+  .steps::after{
+    content:"";position:absolute;right:60px;top:200px;
+    width:280px;height:280px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.10);
+  }
+  .steps .section-head h2{color:#fff}
+  .steps .section-head p{color:rgba(255,255,255,0.75)}
+  .steps-grid{
+    display:grid;
+    grid-template-columns:1fr 460px 1fr;
+    gap:50px;
+    align-items:end;
+    margin-top:40px;
+    position:relative;z-index:1;
+  }
+  .steps-side{
+    display:flex;flex-direction:column;
+    justify-content:flex-end;
+    padding-bottom:60px;
+    gap:60px;
+  }
+  .step{
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .step-icon{
+    width:44px;height:44px;border-radius:10px;
+    background:#fff;color:var(--blue);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step h4{margin:0;font-size:16px;font-weight:700}
+  .step p{margin:0;font-size:13.5px;color:rgba(255,255,255,0.78);line-height:1.6;max-width:240px}
+
+  /* phone mockup (image) */
+  .phone-img{
+    width:100%;margin:0 auto;
+    align-self:end;display:block;
+    filter:drop-shadow(0 24px 40px rgba(0,0,0,.4));
+    margin-bottom:-1px;
+  }
+  .phone-img img{width:100%;height:auto;display:block}
+
+  /* ============ SECURITY ============ */
+  .security{padding:90px 0 80px;background:#fff}
+  .sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:48px}
+  .sec-head h2{margin:0;font-size:38px;font-weight:800;letter-spacing:-0.025em}
+  .sec-head p{margin:0;color:var(--muted);font-size:15px;text-align:right;line-height:1.6}
+  .sec-grid{
+    display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:18px;
+  }
+  .sec-card{
+    border-radius:24px;padding:32px;min-height:280px;
+    position:relative;overflow:hidden;
+    transition:transform .2s;
+  }
+  .sec-card:hover{transform:translateY(-3px)}
+  .sec-card.bank{
+    background:linear-gradient(135deg,#3F7CFB,#2F6CE8);
+    color:#fff;
+    display:flex;justify-content:space-between;gap:20px;
+  }
+  .sec-card.bank::before{
+    content:"";position:absolute;left:-30px;bottom:-30px;
+    width:120px;height:120px;border-radius:50%;
+    background:rgba(255,255,255,0.18);
+  }
+  .sec-card.bank::after{
+    content:"";position:absolute;right:30px;top:-30px;
+    width:80px;height:80px;border-radius:50%;
+    background:rgba(255,255,255,0.18);
+  }
+  .sec-card.bank .text{position:relative;z-index:1;max-width:220px}
+  .sec-card.bank h3{margin:0 0 12px;font-size:20px;font-weight:700;letter-spacing:-0.01em}
+  .sec-card.bank p{margin:0;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,0.85)}
+  .sec-phone{
+    width:140px;align-self:flex-end;
+    position:relative;z-index:1;
+  }
+  .sec-phone img{width:100%;height:auto;display:block;border-radius:14px}
+
+  .sec-card.cream{
+    background:#F8E9C5;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .shield-graphic{
+    width:150px;height:auto;
+    filter:drop-shadow(0 14px 24px rgba(0,0,0,.12));
+  }
+
+  .sec-card.instant{
+    background:linear-gradient(135deg,#3F7CFB,#2F6CE8);
+    color:#fff;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(255,255,255,0.06) 0,rgba(255,255,255,0.06) 1px,transparent 1px,transparent 12px),
+      linear-gradient(135deg,#3F7CFB,#2F6CE8);
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .sec-card.instant h3{margin:0 0 12px;font-size:20px;font-weight:700;letter-spacing:-0.01em}
+  .sec-card.instant p{margin:0;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,0.85)}
+  .light-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(6px);
+    padding:9px 16px;border-radius:30px;
+    font-size:12.5px;font-weight:600;color:#fff;
+    align-self:flex-start;
+    border:1px solid rgba(255,255,255,0.18);
+    cursor:pointer;
+    transition:background .15s;
+  }
+  .light-pill:hover{background:rgba(255,255,255,0.28)}
+  .light-pill .arr{
+    width:24px;height:24px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .light-pill .arr img{width:24px;height:24px;display:block}
+
+  /* ============ WAITLIST ============ */
+  .waitlist{
+    padding:90px 0 80px;
+    background:linear-gradient(180deg,#EAF4FE 0%, #F4F9FF 60%, #FFFFFF 100%);
+  }
+  .waitlist-head{text-align:center;max-width:760px;margin:0 auto 38px}
+  .waitlist-head h2{margin:0;font-size:36px;font-weight:800;letter-spacing:-0.025em;color:#0E0E10}
+  .waitlist-head p{margin:12px 0 0;font-size:15px;color:var(--muted)}
+  .waitlist-head p .count{color:var(--blue);font-weight:700}
+  .waitlist-card{
+    max-width:880px;margin:0 auto;background:#E1EDFE;
+    border-radius:24px;padding:46px 60px 50px;text-align:center;
+    box-shadow:0 30px 60px -30px rgba(47,125,251,.35);
+  }
+  .waitlist-card .crown{
+    width:56px;height:56px;margin:0 auto 14px;
+  }
+  .waitlist-card h3{margin:0 0 10px;font-size:22px;font-weight:800;letter-spacing:-0.01em;color:#0E0E10}
+  .waitlist-card p.sub{margin:0 auto 22px;color:#3F4654;font-size:14.5px;max-width:480px;line-height:1.6}
+  .waitlist-form{display:flex;flex-direction:column;gap:10px;max-width:440px;margin:0 auto}
+  .waitlist-form input{
+    width:100%;height:48px;padding:0 18px;border-radius:10px;
+    border:1px solid rgba(47,125,251,.18);background:rgba(255,255,255,.6);
+    font-family:inherit;font-size:14.5px;color:var(--ink);
+    transition:border-color .15s, background .15s, box-shadow .15s;
+  }
+  .waitlist-form input:focus{
+    outline:none;border-color:var(--blue);background:#fff;
+    box-shadow:0 0 0 4px rgba(47,125,251,.12);
+  }
+  .waitlist-form input::placeholder{color:#8A92A1}
+  .waitlist-submit{
+    height:48px;border-radius:10px;background:var(--blue);color:#fff;
+    font-weight:600;font-size:14.5px;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    transition:background .15s, transform .12s, box-shadow .2s;
+    position:relative;overflow:hidden;
+  }
+  .waitlist-submit:hover{background:var(--blue-600);transform:translateY(-2px);box-shadow:0 10px 24px rgba(47,125,251,.4)}
+  .waitlist-fine{margin:16px 0 22px;color:var(--muted);font-size:13px}
+  .waitlist-perks{
+    display:flex;justify-content:center;align-items:center;gap:28px;
+    flex-wrap:wrap;color:#0E0E10;font-size:13.5px;font-weight:500;
+  }
+  .waitlist-perks span{display:inline-flex;align-items:center;gap:8px}
+  .waitlist-perks svg{flex:none}
+
+  /* Stay in the loop / Telegram */
+  .loop{
+    text-align:center;padding-bottom:40px;
+  }
+  .loop h3{
+    margin:0 0 12px;font-size:30px;font-weight:800;letter-spacing:0.04em;color:#0E0E10;
+  }
+  .loop p{margin:0 auto 22px;max-width:540px;color:var(--muted);font-size:14.5px;line-height:1.6}
+  .loop-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    height:50px;padding:0 28px;border-radius:12px;
+    background:var(--blue);color:#fff;font-weight:600;font-size:15px;
+    transition:background .15s, transform .12s, box-shadow .2s;
+    position:relative;overflow:hidden;
+  }
+  .loop-btn:hover{background:var(--blue-600);transform:translateY(-2px);box-shadow:0 12px 28px rgba(47,125,251,.4)}
+  @media (max-width:680px){
+    .waitlist-card{padding:32px 24px}
+    .waitlist-perks{gap:14px;font-size:13px}
+  }
+
+  /* ============ EVERYONE ============ */
+  .everyone{padding:80px 0 100px;background:linear-gradient(180deg,#fff,#EEF2FB)}
+  .everyone .section-head h2{font-size:32px}
+  .role-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  }
+  .role{
+    padding:8px 28px;border-left:1px solid var(--line);
+  }
+  .role:first-child{border-left:0}
+  .role-ic{
+    width:48px;height:48px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;
+  }
+  .role.new .role-ic{background:#DCE7F8;color:#2F7DFB}
+  .role.active .role-ic{background:#D8EFD9;color:#2E9C5C}
+  .role.biz .role-ic{background:#FBE6BE;color:#C28A2A}
+  .role h4{margin:0 0 6px;font-size:15px;font-weight:700}
+  .role p{margin:0;color:#5B6271;font-size:13.5px;line-height:1.6;max-width:250px}
+
+  /* ============ SUPPORT ============ */
+  .support{padding:90px 0 90px}
+  .support .section-head h2{font-size:34px}
+  .support-row{
+    display:grid;grid-template-columns:1.1fr 1fr;
+    gap:60px;align-items:center;margin-top:48px;
+  }
+  .support-photos{
+    display:grid;grid-template-columns:1fr 1.1fr;
+    gap:14px;align-items:end;
+  }
+  .sup-photo{
+    aspect-ratio:0.85;border-radius:24px;
+    background:#cdb89f;position:relative;overflow:hidden;
+  }
+  .sup-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .sup-photo.tall{aspect-ratio:0.78}
+  .sup-photo .lbl{
+    position:absolute;left:12px;bottom:12px;
+    font:500 10px/1 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.9);
+    background:rgba(0,0,0,.35);padding:5px 8px;border-radius:6px;
+  }
+  .support-text h3{margin:0 0 14px;font-size:24px;font-weight:700;letter-spacing:-0.01em}
+  .support-text p{margin:0 0 28px;color:#5B6271;font-size:15px;line-height:1.65;max-width:380px}
+  .btn-primary.full{padding:14px 28px;border-radius:10px;font-size:15px}
+
+  /* ============ COMMUNITY ============ */
+  .community{padding:60px 0 90px;position:relative;overflow:hidden}
+  .community::before{
+    content:"";position:absolute;left:-200px;top:50px;
+    width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle,#DCE6FA 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .community-row{
+    display:grid;grid-template-columns:1fr 1.4fr;
+    gap:56px;align-items:center;position:relative;z-index:1;
+  }
+  .community-text h2{margin:0 0 18px;font-size:30px;font-weight:800;letter-spacing:-0.02em}
+  .community-text p{margin:0 0 26px;color:#5B6271;font-size:15px;line-height:1.65;max-width:360px}
+  .com-photos{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+    grid-template-rows:1fr 1fr;
+  }
+  .com-photo{
+    border-radius:22px;background:#b8a692;position:relative;overflow:hidden;
+  }
+  .com-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .com-photo.big{
+    grid-row:1 / span 2;aspect-ratio:0.85;
+    background:linear-gradient(135deg,#8a7060,#42332a);
+  }
+  .com-photo.tr{aspect-ratio:1.4;background:linear-gradient(135deg,#a8b8c8,#6a7a8a)}
+  .com-photo.br{aspect-ratio:1.4;background:linear-gradient(135deg,#d6c0a8,#8a6f55)}
+  .com-photo .lbl{
+    position:absolute;left:12px;bottom:12px;
+    font:500 10px/1 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.9);
+    background:rgba(0,0,0,.35);padding:5px 8px;border-radius:6px;
+  }
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonials{padding:60px 0 100px;text-align:center;position:relative}
+  .testimonials h2{font-size:32px;font-weight:800;letter-spacing:-0.025em;margin:0 0 24px}
+  .quote-stage{
+    max-width:640px;margin:0 auto;
+    position:relative;min-height:160px;
+  }
+  .quote{
+    color:#5B6271;font-size:15.5px;line-height:1.7;
+    transition:opacity .35s ease;
+  }
+  .quote.fade{opacity:0}
+  .quote-meta{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    margin-top:36px;padding-top:28px;border-top:1px solid var(--line);
+    max-width:400px;margin-left:auto;margin-right:auto;
+  }
+  .avatar{
+    width:42px;height:42px;border-radius:50%;
+    background:linear-gradient(135deg,#c8a085,#7a5a45);flex-shrink:0;
+  }
+  .quote-meta .who{text-align:left}
+  .quote-meta .who b{display:block;font-size:14px;font-weight:700}
+  .quote-meta .who span{font-size:13px;color:var(--muted)}
+
+  .nav-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:50px;height:50px;border-radius:50%;
+    background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(47,125,251,.3);
+    transition:background .15s,transform .15s;
+  }
+  .nav-arrow:hover{background:var(--blue-600);transform:translateY(-50%) scale(1.05)}
+  .nav-arrow.left{left:32px}
+  .nav-arrow.right{right:32px}
+
+  /* ============ CTA BANNER ============ */
+  .cta-section{padding:40px 0 100px}
+  .cta-banner{
+    background:linear-gradient(135deg,#3F7CFB 0%,#2654D4 100%);
+    border-radius:28px;
+    padding:60px 60px;
+    color:#fff;
+    display:grid;grid-template-columns:1fr 1.2fr;
+    gap:40px;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .cta-banner::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(70deg,rgba(255,255,255,0.05) 0,rgba(255,255,255,0.05) 1px,transparent 1px,transparent 22px);
+    pointer-events:none;
+  }
+  .cta-banner::after{
+    content:"";position:absolute;right:-80px;top:-100px;
+    width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,0.12),transparent 70%);
+  }
+  .cta-banner .cta-text{position:relative;z-index:1}
+  .cta-banner h2{margin:0 0 14px;font-size:34px;font-weight:800;letter-spacing:-0.025em;line-height:1.15}
+  .cta-banner p{margin:0 0 28px;color:rgba(255,255,255,0.85);font-size:14.5px;max-width:340px}
+  .cta-buttons{display:flex;gap:12px;flex-wrap:wrap}
+  .cta-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:13px 22px;border-radius:10px;
+    font-weight:600;font-size:14.5px;
+    transition:transform .12s,background .15s;
+  }
+  .cta-btn:active{transform:translateY(1px)}
+  .cta-btn.white{background:#fff;color:var(--ink)}
+  .cta-btn.white:hover{background:#F2F4F7}
+  .cta-btn.outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.4)}
+  .cta-btn.outline:hover{background:rgba(255,255,255,0.1)}
+
+  .cta-phones{
+    position:relative;z-index:1;
+    display:flex;justify-content:center;align-items:flex-end;gap:0;
+    min-height:480px;
+  }
+  .mini-phone{
+    width:160px;flex-shrink:0;
+    position:relative;
+    filter:drop-shadow(0 24px 40px rgba(0,0,0,.3));
+  }
+  .mini-phone img{width:100%;height:auto;display:block}
+  .mini-phone.center{
+    width:200px;
+    z-index:2;
+    margin:0 -18px;
+  }
+  .mini-phone.left{transform:translateY(40px)}
+  .mini-phone.right{transform:translateY(40px)}
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top:1px solid var(--line);
+    padding:56px 0 48px;background:#fff;
+  }
+  .foot-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;
+    gap:40px;
+  }
+  .foot-brand p{margin:18px 0 22px;color:var(--muted);font-size:13.5px;line-height:1.6;max-width:260px}
+  .socials{display:flex;gap:10px}
+  .soc{
+    width:36px;height:36px;border-radius:50%;background:var(--blue);
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    transition:background .15s;
+  }
+  .soc:hover{background:var(--blue-600)}
+  .foot-col h5{margin:0 0 16px;font-size:15px;font-weight:700}
+  .foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .foot-col a{color:#5B6271;font-size:13.5px;transition:color .15s}
+  .foot-col a:hover{color:var(--blue)}
+
+  /* ============ Responsive ============ */
+  @media (max-width:980px){
+    .nav-links{gap:20px}
+    .nav-links a:not(.btn){display:none}
+    .hero-tiles{grid-template-columns:repeat(2,1fr)}
+    .hero-tiles .tile-tx{grid-row:1;grid-column:1/-1;aspect-ratio:1.6}
+    .feat-grid{grid-template-columns:1fr 1fr}
+    .steps-grid{grid-template-columns:1fr;gap:24px;min-height:0}
+    .steps-side{padding-bottom:0;height:auto;gap:36px}
+    .phone-img{order:-1}
+    .sec-grid{grid-template-columns:1fr}
+    .sec-head{grid-template-columns:1fr}
+    .sec-head p{text-align:left}
+    .role-grid{grid-template-columns:1fr}
+    .role{border-left:0;border-top:1px solid var(--line);padding-top:24px;margin-top:24px}
+    .support-row,.community-row{grid-template-columns:1fr}
+    .cta-banner{grid-template-columns:1fr;padding:36px}
+    .cta-phones{height:280px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-arrow.left{left:8px}
+    .nav-arrow.right{right:8px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============= NAV ============= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo" aria-label="KclautX">
+      <img src="kclautx-logo.png" alt="KclautX" />
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About Us</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============= HERO ============= -->
+<section class="hero">
+  <div class="wrap">
+    <h1 data-reveal="up">Your Trusted Exchange for<br/>Crypto, Giftcards &amp; Bills</h1>
+    <p class="lede" data-reveal="up">
+      Experience instant transactions, secure wallets, and 24/7 support.<br/>
+      Buy crypto, sell giftcards, and pay bills seamlessly all in one app.
+    </p>
+    <div class="hero-stats" data-reveal="up">
+      <div class="stat"><div class="n" data-count="24" data-suffix="/7">0</div><span class="l">Live support</span></div>
+      <div class="stat"><div class="n" data-count="99" data-suffix="%" data-decimals="1">0</div><span class="l">Uptime</span></div>
+      <div class="stat"><div class="n" data-count="15" data-suffix="s">0</div><span class="l">Avg payout</span></div>
+    </div>
+    <div class="download-row">
+      <a href="#waitlist" class="btn btn-primary waitlist-cta">
+        Join the waitlist
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-tiles" data-parallax>
+      <div class="tile"><img src="tile-1-transactions.png" alt="Transactions panel" /></div>
+      <div class="tile"><img src="tile-2-photo.png" alt="" /></div>
+      <div class="tile"><img src="tile-3-cream.png" alt="Transact, and manage your digital assets with ease" /></div>
+      <div class="tile"><img src="tile-4-giftcards.png" alt="Trade Giftcards" /></div>
+      <div class="tile"><img src="tile-5-security.png" alt="Enjoy instant transactions with real time confirmations — Security guaranteed" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= GIFTCARD STRIP ============= -->
+<section class="strip">
+  <div class="wrap">
+    <h2>Explore Various Giftcard Options</h2>
+    <div class="marquee">
+      <div class="marquee-track" id="giftMarquee"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FEATURES ============= -->
+<section class="features">
+  <div class="wrap">
+    <div class="section-head" data-reveal="up">
+      <h2>Everything You Need in One App</h2>
+      <p>Trade, transact, and manage your digital assets with ease</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="num">01</div>
+        <h3>Buy &amp; Sell Crypto</h3>
+        <p>Trade Bitcoin, Ethereum, Solana, and USDT with the best rates in Nigeria. Instant transactions guaranteed.</p>
+      </div>
+      <div class="feat">
+        <div class="num">02</div>
+        <h3>Sell Giftcards</h3>
+        <p>Convert your unused giftcards to instant Naira. Apple, Steam, Amazon, Google Play and more supported.</p>
+      </div>
+      <div class="feat">
+        <div class="num">03</div>
+        <h3>Pay Bills</h3>
+        <p>Recharge airtime, buy data, pay electricity bills and cable TV subscriptions directly from your wallet.</p>
+      </div>
+      <div class="feat">
+        <div class="num">04</div>
+        <h3>Dual Wallet System</h3>
+        <p>Smart wallet management with NGN Wallet for withdrawals and Kwallet for trading and spending.</p>
+      </div>
+      <div class="feat">
+        <div class="num">05</div>
+        <h3>Crypto Transfers</h3>
+        <p>Send crypto to other KclautX users instantly for free, or to external wallets with minimal fees.</p>
+      </div>
+      <div class="feat">
+        <div class="num">06</div>
+        <h3>Crypto Swap</h3>
+        <p>Seamlessly swap between different cryptocurrencies at competitive rates without leaving the app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= STEPS ============= -->
+<section class="steps" style="height: 781.891px">
+  <span class="orb a"></span><span class="orb b"></span>
+  <div class="wrap">
+    <div class="section-head" data-reveal="up">
+      <h2>Get Started in 4 Simple Steps</h2>
+      <p>Experience instant transactions, secure wallets, and 24/7 support.<br/>Buy crypto, sell giftcards, and pay bills seamlessly all in one app.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="steps-side">
+        <div class="step">
+          <div class="step-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <h4>Sign Up &amp; Verify</h4>
+          <p>Create your account in minutes. Complete KYC verification to unlock full features and higher limits.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="3" height="9"/><rect x="10.5" y="6" width="3" height="14"/><rect x="17" y="14" width="3" height="6"/></svg>
+          </div>
+          <h4>Trade &amp; Transact</h4>
+          <p>Buy/sell crypto, trade giftcards, pay bills, or send transfers. All transactions are instant and secure.</p>
+        </div>
+      </div>
+
+      <!-- phone -->
+      <div class="phone-img">
+        <img src="phone-mockup.png" alt="KclautX mobile app showing total balance and quick actions" style="width: 310px; height: 437.891px" />
+      </div>
+
+      <div class="steps-side">
+        <div class="step">
+          <div class="step-icon">
+            <img src="icon-wallet.png" alt="" width="24" height="24" />
+          </div>
+          <h4>Fund Your Wallet</h4>
+          <p>Deposit Naira via bank transfer to your Kwallet, or deposit crypto directly to start trading.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <img src="icon-dollar.png" alt="" width="24" height="24" />
+          </div>
+          <h4>Withdraw Anytime</h4>
+          <p>Cash out your funds to your bank account instantly. Your NGN Wallet is always ready for withdrawals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SECURITY ============= -->
+<section class="security" id="security">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 style="font-size: 32px; font-weight: 700; height: 40px">Your Security is Our Priority</h2>
+      <p>We offer top bank-level security and compliance.<br/>Your NGN Wallet is always ready for withdrawals.</p>
+    </div>
+    <div class="sec-grid">
+      <div class="sec-card bank">
+        <div class="text">
+          <h3>Bank-Level Security</h3>
+          <p>Your funds and data are protected with military-grade encryption and multi-layer security protocols.</p>
+        </div>
+        <div class="sec-phone">
+          <img src="security-phone.png" alt="Security Enabled phone screen" style="width: 128.453px; object-fit: cover" />
+        </div>
+      </div>
+
+      <div class="sec-card cream">
+        <img class="shield-graphic" src="security-padlock.png" alt="Padlock shield" style="width: 190px; height: 190px" />
+      </div>
+
+      <div class="sec-card instant">
+        <div>
+          <h3 style="font-size: 24px; font-weight: 600; height: 3px">Instant Transaction</h3>
+          <p style="font-size: 15px; padding: 20px 0px 0px">All transactions are processed instantly with real-time confirmations. No delays, no waiting.</p>
+        </div>
+        <button class="light-pill" style="font-family: Inter; font-size: 14px; color: #fff">
+          Trade at the speed of light
+          <span class="arr">
+            <img src="icon-rocket.png" alt="" />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= EVERYONE ============= -->
+<section class="everyone">
+  <div class="wrap">
+    <div class="section-head" data-reveal="up">
+      <h2>KclautX for Everyone</h2>
+    </div>
+    <div class="role-grid">
+      <div class="role new">
+        <div class="role-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M14 20c0-2.5 2-4.5 5-4.5"/></svg>
+        </div>
+        <h4>For New Traders</h4>
+        <p>Step-by-step onboarding and educational guidance mean you learn as you trade.</p>
+      </div>
+      <div class="role active">
+        <div class="role-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M14 20c0-2.5 2-4.5 5-4.5"/></svg>
+        </div>
+        <h4>For Active Traders</h4>
+        <p>Access rapid execution, charting tools, and low spreads built for speed.</p>
+      </div>
+      <div class="role biz">
+        <div class="role-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M14 20c0-2.5 2-4.5 5-4.5"/></svg>
+        </div>
+        <h4>For Businesses</h4>
+        <p>Enterprise APIs and payment integrations empower fast digital asset flows for companies and developers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= WAITLIST ============= -->
+<section class="waitlist" id="waitlist" data-screen-label="08 Waitlist">
+  <div class="wrap">
+    <div class="waitlist-head" data-reveal="up">
+      <h2>A better platform with better rewards.</h2>
+      <p>Only <span class="count" id="wlCount">5,713</span> founding member spots remaining</p>
+    </div>
+
+    <div class="waitlist-card" data-reveal="up">
+      <svg class="crown" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 22 L18 38 L28 18 L32 42 L36 18 L46 38 L54 22 L48 50 L16 50 Z" fill="#F2B339" stroke="#C68A1B" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="10" cy="22" r="3.6" fill="#F2B339" stroke="#C68A1B" stroke-width="1.6"/>
+        <circle cx="32" cy="14" r="3.6" fill="#F2B339" stroke="#C68A1B" stroke-width="1.6"/>
+        <circle cx="54" cy="22" r="3.6" fill="#F2B339" stroke="#C68A1B" stroke-width="1.6"/>
+      </svg>
+      <h3>Join the Waitlist to Get Your Founding Member Badge</h3>
+      <p class="sub">Lock in your exclusive status and unlock all the premium perks that come with being a founding member of KclautX.</p>
+      <form class="waitlist-form" id="waitlistForm" novalidate>
+        <input type="text" id="wlName" placeholder="Enter your name" autocomplete="name" required />
+        <input type="email" id="wlEmail" placeholder="Enter your email" autocomplete="email" required />
+        <button type="submit" class="waitlist-submit">
+          <span id="wlBtnText">Secure My Founding Member Spot</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+      </form>
+      <p class="waitlist-fine">Free to join &bull; No commitment &bull; Cancel anytime</p>
+      <div class="waitlist-perks">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2F7DFB"/><path d="M8 12.5l3 3 5-6" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Zero-fee trades</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2F7DFB"/><path d="M8 12.5l3 3 5-6" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Exclusive badge</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2F7DFB"/><path d="M8 12.5l3 3 5-6" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Beta access</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2F7DFB"/><path d="M8 12.5l3 3 5-6" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</span>
+      </div>
+    </div>
+
+    <div class="loop" data-reveal="up" style="padding-top:72px">
+      <h3>STAY IN THE LOOP</h3>
+      <p>Join our Telegram community for real-time launch updates, exclusive insights, and direct access to the team</p>
+      <a href="https://t.me/kclautx" target="_blank" rel="noopener" class="loop-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.5L2 11l5.5 1.8L19 6.2 9 14l-.5 5.5 3.2-3 4.3 3.3 4.5-16.5z"/></svg>
+        Join our Telegram Community
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SUPPORT ============= -->
+<section class="support" id="support">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:0" data-reveal="up">
+      <h2>Support &amp; Resources</h2>
+    </div>
+    <div class="support-row" data-reveal="up">
+      <div class="support-photos">
+        <div class="sup-photo">
+          <img src="support-male.png" alt="Male support agent with headset" />
+        </div>
+        <div class="sup-photo tall">
+          <img src="support-female.png" alt="Female support agent on call" style="width: 273.359px" />
+        </div>
+      </div>
+      <div class="support-text">
+        <h3>24/7 Customer Support</h3>
+        <p>Real humans, fast answers. Reach our team any hour of the day for help with trades, transfers, KYC, or anything else.</p>
+        <a href="#" class="btn btn-primary full">
+          Contact us today
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= COMMUNITY ============= -->
+<section class="community">
+  <div class="wrap">
+    <div class="community-row" data-reveal="up">
+      <div class="community-text">
+        <h2>Join the KclautX Community</h2>
+        <p>Millions of traders worldwide trust KclautX to simplify their crypto journey. Sign up now and start trading at the best rates.</p>
+        <a href="#" class="btn btn-primary full">
+          Contact us today
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="com-photos">
+        <div class="com-photo big">
+          <img src="community-handshake.png" alt="Two people sharing a high-five" />
+        </div>
+        <div class="com-photo tr">
+          <img src="community-circle.png" alt="Group of friends in a circle, low angle" />
+        </div>
+        <div class="com-photo br">
+          <img src="community-friends.png" alt="Group of friends celebrating" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= TESTIMONIALS ============= -->
+<section class="testimonials" id="testimonials">
+  <button class="nav-arrow left" aria-label="Previous" id="prevQuote">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <button class="nav-arrow right" aria-label="Next" id="nextQuote">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+  <div class="wrap">
+    <h2>What Our Users Are Saying</h2>
+    <div class="quote-stage">
+      <p class="quote" id="quoteText">"KclautX has the best rates I've found in Nigeria. Transactions are instant and customer support is amazing!. I've been selling my giftcards here for months. Always get paid instantly and the rates are competitive."</p>
+      <div class="quote-meta">
+        <div class="avatar" id="quoteAvatar"></div>
+        <div class="who">
+          <b id="quoteName">Temiloluwa Abioye</b>
+          <span id="quoteRole">Crypto Enthusiast</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= CTA BANNER ============= -->
+<section class="cta-section">
+  <div class="wrap">
+    <div class="cta-banner" style="height: 450px; padding: 0px 20px; width: 1083px; background-position: center center; text-align: left">
+      <div class="cta-text">
+        <h2>Ready to Get Started<br/>With Us Today?</h2>
+        <p>Join thousands of users trading securely on KclautX</p>
+        <div class="cta-buttons">
+          <a href="#" class="cta-btn white">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--blue)"><path d="M3 2.5v19l16-9.5L3 2.5z"/></svg>
+            Download App
+          </a>
+          <a href="#" class="cta-btn outline">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11a9 9 0 0 1 18 0v5a3 3 0 0 1-3 3h-2v-7h5M3 11v5a3 3 0 0 0 3 3h2v-7H3"/></svg>
+            Contact Support
+          </a>
+        </div>
+      </div>
+      <div class="cta-phones">
+        <div class="mini-phone left"><img src="cta-phone-swap.png" alt="Swap screen" /></div>
+        <div class="mini-phone center"><img src="cta-phone-balance.png" alt="Total balance screen" /></div>
+        <div class="mini-phone right"><img src="cta-phone-btc.png" alt="BTC wallet screen" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo" aria-label="KclautX">
+          <img src="kclautx-logo.png" alt="KclautX" />
+        </a>
+        <p>Your trusted exchange for crypto, giftcards and bills built for Nigeria, ready for the world.</p>
+        <div class="socials">
+          <a href="#" class="soc" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="soc" aria-label="Twitter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l-6 8 6 8h-3l-4.5-6L5 20H3l6.5-8L3 4h3l4.5 6L15 4h3z"/></svg>
+          </a>
+          <a href="#" class="soc" aria-label="Telegram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L2 11l6 2 2 7 4-4 5 5z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul><li><a href="#">About Us</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Contact Support</a></li>
+          <li><a href="#">support@kclautmedia</a></li>
+          <li><a href="#">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // sticky border on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 4) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // testimonial carousel
+  const quotes = [
+    {
+      text: '"KclautX has the best rates I\'ve found in Nigeria. Transactions are instant and customer support is amazing! I\'ve been selling my giftcards here for months. Always get paid instantly and the rates are competitive."',
+      name: 'Temiloluwa Abioye',
+      role: 'Crypto Enthusiast',
+      grad: 'linear-gradient(135deg,#c8a085,#7a5a45)',
+      img: 'avatar-temiloluwa.png'
+    },
+    {
+      text: '"I switched all my giftcard sales to KclautX after a friend recommended it. The dual wallet system makes it so easy to separate my trading funds from my withdrawals. Withdrawals hit my bank in seconds."',
+      name: 'Chinedu Okafor',
+      role: 'Active Trader',
+      grad: 'linear-gradient(135deg,#7a8da3,#3a4d63)',
+      img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&auto=format'
+    },
+    {
+      text: '"As a small business owner, the API access has been a game-changer for accepting crypto from international clients. The KYC process was the smoothest I\'ve ever experienced. Highly recommend KclautX."',
+      name: 'Ngozi Adeyemi',
+      role: 'Founder, Lagos',
+      grad: 'linear-gradient(135deg,#b88a6a,#6a4a2a)',
+      img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&h=200&fit=crop&crop=faces&auto=format'
+    }
+  ];
+  let qi = 0;
+  const qText = document.getElementById('quoteText');
+  const qName = document.getElementById('quoteName');
+  const qRole = document.getElementById('quoteRole');
+  const qAvatar = document.getElementById('quoteAvatar');
+
+  function showQuote(i){
+    qText.classList.add('fade');
+    setTimeout(() => {
+      const q = quotes[i];
+      qText.textContent = q.text;
+      qName.textContent = q.name;
+      qRole.textContent = q.role;
+      if (q.img) {
+        qAvatar.style.backgroundImage = 'url("' + q.img + '")';
+        qAvatar.style.backgroundSize = 'cover';
+        qAvatar.style.backgroundPosition = 'center';
+      } else {
+        qAvatar.style.backgroundImage = '';
+        qAvatar.style.background = q.grad;
+      }
+      qText.classList.remove('fade');
+    }, 200);
+  }
+  document.getElementById('prevQuote').addEventListener('click', () => {
+    qi = (qi - 1 + quotes.length) % quotes.length;
+    showQuote(qi);
+  });
+  document.getElementById('nextQuote').addEventListener('click', () => {
+    qi = (qi + 1) % quotes.length;
+    showQuote(qi);
+  });
+
+  // scroll-reveal observer
+  (function(){
+    const els = document.querySelectorAll('[data-reveal]');
+    els.forEach((el, i) => { if (!el.style.getPropertyValue('--rd')) el.style.setProperty('--rd', (i % 4) * 80 + 'ms'); });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+
+  // animated number counters
+  (function(){
+    const nums = document.querySelectorAll('[data-count]');
+    const fmt = (n, dec) => {
+      const s = dec ? n.toFixed(dec) : Math.floor(n).toString();
+      const [i, f] = s.split('.');
+      return i.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (f ? '.' + f : '');
+    };
+    const animate = (el) => {
+      const target = parseFloat(el.dataset.count);
+      const dec = parseInt(el.dataset.decimals || '0', 10);
+      const suffix = el.dataset.suffix || '';
+      const dur = 1600;
+      const start = performance.now();
+      const tick = (t) => {
+        const p = Math.min(1, (t - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(target * eased, dec) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); }});
+    }, { threshold: 0.4 });
+    nums.forEach(n => io.observe(n));
+  })();
+
+  // cursor glow
+  (function(){
+    if (matchMedia('(hover:none)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const g = document.createElement('div');
+    g.className = 'cursor-glow';
+    document.body.appendChild(g);
+    let x=0,y=0,tx=0,ty=0;
+    document.addEventListener('mousemove', (e) => { tx=e.clientX; ty=e.clientY; g.classList.add('on'); });
+    document.addEventListener('mouseleave', () => g.classList.remove('on'));
+    const loop = () => { x += (tx-x)*0.15; y += (ty-y)*0.15; g.style.transform = `translate(${x}px, ${y}px) translate(-50%,-50%)`; requestAnimationFrame(loop); };
+    loop();
+  })();
+
+  // hero tiles parallax
+  (function(){
+    const wrap = document.querySelector('.hero-tiles[data-parallax]');
+    if (!wrap) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const tiles = wrap.querySelectorAll('.tile');
+    const factors = [0.18, 0.10, 0.14, 0.08, 0.20];
+    const onScroll = () => {
+      const r = wrap.getBoundingClientRect();
+      const center = (r.top + r.height/2) - window.innerHeight/2;
+      tiles.forEach((t, i) => {
+        t.style.setProperty('--py', (-center * (factors[i]||0.1)) + 'px');
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // magnetic primary buttons
+  (function(){
+    if (matchMedia('(hover:none)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('.btn-primary, .cta-btn').forEach(btn => {
+      btn.classList.add('magnet');
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width/2);
+        const y = e.clientY - (r.top + r.height/2);
+        btn.style.transform = `translate(${x*0.18}px, ${y*0.25}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  })();
+
+  // mark section-heads as 'in' for gradient sweep when revealed
+  (function(){
+    const heads = document.querySelectorAll('.section-head');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);}});
+    }, {threshold:0.3});
+    heads.forEach(h=>io.observe(h));
+  })();
+
+  // nav glass on scroll
+  (function(){
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // waitlist form
+  (function(){
+    const form = document.getElementById('waitlistForm');
+    if (!form) return;
+    const btnText = document.getElementById('wlBtnText');
+    const count = document.getElementById('wlCount');
+    const TELEGRAM_URL = 'https://t.me/kclautx';
+    const SPOTS_KEY = 'kclautx_spots_remaining';
+    const CLAIMED_KEY = 'kclautx_spot_claimed';
+
+    // load persisted count
+    const stored = parseInt(localStorage.getItem(SPOTS_KEY) || '', 10);
+    if (!isNaN(stored) && count) count.textContent = stored.toLocaleString();
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('wlName').value.trim();
+      const email = document.getElementById('wlEmail').value.trim();
+      if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        btnText.textContent = 'Please check your details';
+        setTimeout(() => btnText.textContent = 'Secure My Founding Member Spot', 1800);
+        return;
+      }
+      // decrement spots remaining (only once per device)
+      if (count && !localStorage.getItem(CLAIMED_KEY)) {
+        const cur = parseInt(count.textContent.replace(/,/g,''), 10) || 5713;
+        const next = Math.max(0, cur - 1);
+        count.textContent = next.toLocaleString();
+        localStorage.setItem(SPOTS_KEY, String(next));
+        localStorage.setItem(CLAIMED_KEY, '1');
+      }
+      try { localStorage.setItem('kclautx_waitlist', JSON.stringify({name, email, at: Date.now()})); } catch(e){}
+
+      // success state then redirect to Telegram
+      btnText.textContent = "Opening Telegram…";
+      form.querySelector('button').style.background = '#1F8A5B';
+      setTimeout(() => { window.open(TELEGRAM_URL, '_blank', 'noopener'); }, 450);
+    });
+  })();
+
+  // build infinite giftcard marquee
+  (function(){
+    const amazonSwoosh = `<svg class="swoosh" viewBox="0 0 90 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 4 C 18 12, 38 14, 60 12 C 75 11, 84 8, 88 6" stroke="#FF9900" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M82 3 L88 6 L84 11" stroke="#FF9900" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
+    const nikeSwoosh = `<svg class="swoosh" viewBox="0 0 64 26" fill="#0E0E10" xmlns="http://www.w3.org/2000/svg"><path d="M62 4 C 50 18, 35 24, 22 22 C 14 21, 10 17, 11 12 C 12 16, 18 18, 26 17 C 36 15.5, 50 11, 62 4 Z"/></svg>`;
+    const items = [
+      `<span class="gl" style="font-style:italic">asos</span>`,
+      `<span class="gl gl-google"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span>`,
+      `<span class="gl"><svg width="30" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-3.05 2.49-4.51 2.6-4.58-1.42-2.07-3.62-2.36-4.4-2.39-1.87-.19-3.66 1.1-4.61 1.1-.96 0-2.42-1.07-3.99-1.04-2.05.03-3.95 1.19-5.01 3.02-2.16 3.74-.55 9.27 1.54 12.31 1.04 1.49 2.27 3.16 3.89 3.1 1.57-.06 2.16-1.01 4.05-1.01 1.89 0 2.42 1.01 4.07.97 1.69-.03 2.75-1.5 3.78-3.01 1.2-1.72 1.69-3.4 1.71-3.49-.04-.02-3.27-1.25-3.3-4.98zM14.07 3.83c.85-1.04 1.43-2.47 1.27-3.91-1.23.05-2.72.82-3.6 1.84-.79.91-1.49 2.39-1.31 3.79 1.38.11 2.79-.7 3.64-1.72z"/></svg></span>`,
+      `<span class="gl gl-nike">${nikeSwoosh}<span class="sb">SB</span></span>`,
+      `<span class="gl gl-amazon">amazon${amazonSwoosh}</span>`,
+      `<span class="gl" style="font-style:italic;letter-spacing:-0.04em;font-weight:900">adidas</span>`,
+      `<span class="gl"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11"/><path d="M7 19l5-7 5 7M5 7l7 5 7-5" stroke="#fff" stroke-width="1.5" fill="none"/></svg></span>`,
+      `<span class="gl" style="font-family:Georgia,serif;font-style:italic;font-weight:700">Steam</span>`,
+      `<span class="gl" style="letter-spacing:0;font-weight:300;font-size:24px">PlayStation</span>`,
+      `<span class="gl" style="color:#1DB954;font-weight:900">Spotify</span>`,
+      `<span class="gl" style="color:#E50914;font-style:italic;font-weight:900;letter-spacing:-0.05em">NETFLIX</span>`,
+      `<span class="gl" style="color:#0071CE;font-weight:900;letter-spacing:-0.04em">Walmart</span>`,
+      `<span class="gl" style="font-family:Georgia,serif;letter-spacing:0.02em">SEPHORA</span>`,
+      `<span class="gl" style="font-weight:900;letter-spacing:-0.04em"><span style="color:#E53238">e</span><span style="color:#0064D2">b</span><span style="color:#F5AF02">a</span><span style="color:#86B817">y</span></span>`,
+      `<span class="gl" style="color:#FF6900;font-weight:900;letter-spacing:-0.03em">target</span>`,
+      `<span class="gl" style="font-weight:800;letter-spacing:-0.04em">Uber</span>`,
+    ];
+    const track = document.getElementById('giftMarquee');
+    if (track) track.innerHTML = (items.join('') + items.join(''));
+  })();
+
+  // smooth scroll for in-page nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+</script>
+<script src="modern.js"></script>
+</body>
+</html>

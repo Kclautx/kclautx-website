@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms of Use — KclautX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="modern.css">
+<style>
+  :root{
+    --blue:#2F7DFB;--blue-600:#1F6BE8;--blue-50:#EAF1FE;
+    --ink:#0E0E10;--muted:#6B7280;--line:#E7EAEE;--bg:#FFFFFF;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  .doc-wrap{max-width:760px;margin:0 auto;padding:0 32px}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);-webkit-backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid transparent;transition:background .3s, box-shadow .3s, border-color .3s}
+  .nav.scrolled{border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(0,0,0,.04)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo img{height:28px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:36px}
+  .nav-links a{color:var(--ink);font-weight:500;font-size:15px;transition:color .15s}
+  .nav-links a:hover{color:var(--blue)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 22px;border-radius:10px;font-weight:600;font-size:14.5px;transition:transform .12s, background .15s, box-shadow .2s}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 1px 2px rgba(47,125,251,.25);position:relative;overflow:hidden}
+  .btn-primary:hover{background:var(--blue-600);transform:translateY(-2px);box-shadow:0 10px 24px rgba(47,125,251,.35)}
+
+  /* BANNER */
+  .doc-banner{
+    position:relative;background:linear-gradient(135deg,#3F8DFB 0%,#1F6BE8 100%);
+    padding:56px 0;text-align:center;color:#fff;overflow:hidden;
+  }
+  .doc-banner::before{
+    content:"";position:absolute;inset:0;opacity:.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 240' preserveAspectRatio='none'><g fill='none' stroke='white' stroke-width='1.2' stroke-opacity='.4'><path d='M0 60 Q 180 20 360 60 T 720 60 T 1080 60 T 1440 60'/><path d='M0 100 Q 180 60 360 100 T 720 100 T 1080 100 T 1440 100'/><path d='M0 140 Q 180 100 360 140 T 720 140 T 1080 140 T 1440 140'/><path d='M0 180 Q 180 140 360 180 T 720 180 T 1080 180 T 1440 180'/></g></svg>");
+    background-size:100% 100%;background-repeat:no-repeat;
+  }
+  .doc-banner h1{position:relative;margin:0;font-size:clamp(34px,4.4vw,46px);font-weight:800;letter-spacing:-0.02em}
+
+  /* DOC */
+  .doc{padding:64px 0 96px}
+  .doc h2{
+    margin:36px 0 12px;font-size:17px;font-weight:700;letter-spacing:-0.005em;
+  }
+  .doc h2:first-child{margin-top:0}
+  .doc p{margin:0 0 14px;color:#3F4654;font-size:14.5px}
+  .doc ul{margin:0 0 14px;padding-left:22px;color:#3F4654;font-size:14.5px}
+  .doc ul li{margin-bottom:6px}
+  .doc ul li::marker{color:#3F4654}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:56px 0 48px;background:#fff}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
+  .foot-brand p{margin:18px 0 22px;color:var(--muted);font-size:13.5px;line-height:1.6;max-width:260px}
+  .socials{display:flex;gap:10px}
+  .soc{width:34px;height:34px;border-radius:8px;background:var(--blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;transition:background .15s, transform .15s}
+  .soc:hover{background:var(--blue-600);transform:translateY(-2px)}
+  .foot-col h5{margin:0 0 16px;font-size:15px;font-weight:700}
+  .foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .foot-col a{color:#5B6271;font-size:13.5px;transition:color .15s}
+  .foot-col a:hover{color:var(--blue)}
+
+  @media (max-width:980px){
+    .nav-links{gap:20px}
+    .nav-links a:not(.btn){display:none}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo" aria-label="KclautX"><img src="kclautx-logo.png" alt="KclautX" /></a>
+    <nav class="nav-links">
+      <a href="about.html">About Us</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<section class="doc-banner"><h1>Terms of Use</h1></section>
+
+<section class="doc">
+  <div class="doc-wrap">
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing and using KclautX ("the Platform"), you accept and agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use the Platform.</p>
+
+    <h2>2. Eligibility</h2>
+    <p>You must be at least 18 years old and a resident of Nigeria to use KclautX. By registering, you confirm that you meet these requirements and that all information provided is accurate.</p>
+
+    <h2>3. Account Registration</h2>
+    <p>Users must:</p>
+    <ul>
+      <li>Provide accurate and complete registration information</li>
+      <li>Complete KYC verification as required</li>
+      <li>Maintain the security of their account credentials</li>
+      <li>Notify KclautX immediately of any unauthorized access</li>
+    </ul>
+
+    <h2>4. Prohibited Activities</h2>
+    <p>Users are prohibited from:</p>
+    <ul>
+      <li>Using the Platform for illegal activities or money laundering</li>
+      <li>Attempting to manipulate rates or exploit system vulnerabilities</li>
+      <li>Creating multiple accounts to bypass transaction limits</li>
+      <li>Engaging in fraudulent giftcard trades</li>
+      <li>Harassing or threatening other users or staff</li>
+    </ul>
+
+    <h2>5. Transaction Limits</h2>
+    <p>Transaction limits are determined by your KYC verification level. Level 1 users have restricted access, Level 2 users have standard limits, and Level 3 users enjoy unlimited transactions (subject to administrative review).</p>
+
+    <h2>6. Fees and Charges</h2>
+    <p>KclautX charges minimal fees on certain transactions to cover operational costs. All fees are displayed transparently before transaction confirmation. We reserve the right to modify fees with prior notice.</p>
+
+    <h2>7. Account Suspension and Termination</h2>
+    <p>We reserve the right to suspend or terminate accounts that violate these Terms, engage in suspicious activity, or pose a risk to the Platform or other users. Users may also delete their accounts at any time through the app settings.</p>
+
+    <h2>8. Disclaimer of Warranties</h2>
+    <p>KclautX is provided "as is" without warranties of any kind. We do not guarantee uninterrupted service and are not responsible for losses due to technical failures, market volatility, or third-party service disruptions.</p>
+
+    <h2>9. Limitation of Liability</h2>
+    <p>KclautX shall not be liable for indirect, incidental, or consequential damages arising from use of the Platform. Our total liability is limited to the amount of fees paid by you in the preceding 12 months.</p>
+
+    <h2>10. Changes to Terms</h2>
+    <p>We may update these Terms from time to time. Continued use of the Platform after changes constitutes acceptance of the updated Terms. Users will be notified of significant changes via email or in-app notification.</p>
+
+    <h2>11. Governing Law</h2>
+    <p>These Terms are governed by the laws of the Federal Republic of Nigeria. Any disputes shall be resolved in Nigerian courts.</p>
+
+    <h2>12. Contact Information</h2>
+    <p>For questions about these Terms, contact us at: legal@kclautmedia.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="logo" aria-label="KclautX"><img src="kclautx-logo.png" alt="KclautX" /></a>
+        <p>Your trusted exchange for crypto, giftcards and bills — built for Nigeria, ready for the world.</p>
+        <div class="socials">
+          <a href="#" class="soc" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" class="soc" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l-6 8 6 8h-3l-4.5-6L5 20H3l6.5-8L3 4h3l4.5 6L15 4h3z"/></svg></a>
+          <a href="#" class="soc" aria-label="Telegram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L2 11l6 2 2 7 4-4 5 5z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="foot-col"><h5>Legal</h5><ul><li><a href="terms.html">Terms of Use</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+      <div class="foot-col"><h5>Support</h5><ul><li><a href="support.html">Contact Support</a></li><li><a href="mailto:support@kclautmedia.com">support@kclautmedia.com</a></li><li><a href="#">WhatsApp</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { if (window.scrollY > 4) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); });
+</script>
+<script src="modern.js"></script>
+</body>
+</html>
