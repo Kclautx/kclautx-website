@@ -1667,7 +1667,9 @@
     const stored = parseInt(localStorage.getItem(SPOTS_KEY) || '', 10);
     if (!isNaN(stored) && count) count.textContent = stored.toLocaleString();
 
-    form.addEventListener('submit', (e) => {
+    const API_URL = 'https://api.kclautx.com/api/waitlist';
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('wlName').value.trim();
       const email = document.getElementById('wlEmail').value.trim();
@@ -1676,20 +1678,46 @@
         setTimeout(() => btnText.textContent = 'Secure My Founding Member Spot', 1800);
         return;
       }
-      // decrement spots remaining (only once per device)
-      if (count && !localStorage.getItem(CLAIMED_KEY)) {
-        const cur = parseInt(count.textContent.replace(/,/g,''), 10) || 5713;
-        const next = Math.max(0, cur - 1);
-        count.textContent = next.toLocaleString();
-        localStorage.setItem(SPOTS_KEY, String(next));
-        localStorage.setItem(CLAIMED_KEY, '1');
-      }
-      try { localStorage.setItem('kclautx_waitlist', JSON.stringify({name, email, at: Date.now()})); } catch(e){}
 
-      // success state then redirect to Telegram
-      btnText.textContent = "Opening Telegram…";
-      form.querySelector('button').style.background = '#1F8A5B';
-      setTimeout(() => { window.open(TELEGRAM_URL, '_blank', 'noopener'); }, 450);
+      const submitBtn = form.querySelector('button');
+      submitBtn.disabled = true;
+      btnText.textContent = 'Securing your spot…';
+
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email }),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok && res.status !== 409) {
+          btnText.textContent = data.error || 'Something went wrong, try again';
+          submitBtn.disabled = false;
+          setTimeout(() => btnText.textContent = 'Secure My Founding Member Spot', 1800);
+          return;
+        }
+
+        if (typeof data.totalUsers === 'number' && count) {
+          count.textContent = data.totalUsers.toLocaleString();
+          localStorage.setItem(SPOTS_KEY, String(data.totalUsers));
+        } else if (count && !localStorage.getItem(CLAIMED_KEY)) {
+          const cur = parseInt(count.textContent.replace(/,/g,''), 10) || 5713;
+          const next = Math.max(0, cur - 1);
+          count.textContent = next.toLocaleString();
+          localStorage.setItem(SPOTS_KEY, String(next));
+        }
+        localStorage.setItem(CLAIMED_KEY, '1');
+        try { localStorage.setItem('kclautx_waitlist', JSON.stringify({name, email, at: Date.now()})); } catch(e){}
+
+        btnText.textContent = 'Opening Telegram…';
+        submitBtn.style.background = '#1F8A5B';
+        setTimeout(() => { window.open(TELEGRAM_URL, '_blank', 'noopener'); }, 450);
+      } catch (err) {
+        btnText.textContent = 'Network error, try again';
+        submitBtn.disabled = false;
+        setTimeout(() => btnText.textContent = 'Secure My Founding Member Spot', 1800);
+      }
     });
   })();
 
