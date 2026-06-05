@@ -243,7 +243,7 @@
   <div class="inner">
     <p class="eyebrow">KclautX Help Center</p>
     <h1>Find answers to your questions</h1>
-    <p>Browse our guides on accounts, trading, payments and more — or search to jump straight to an answer.</p>
+    <p>Browse our guides on accounts, trading, payments and more, or search to jump straight to an answer.</p>
     <div class="help-search">
       <span class="si">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
@@ -333,7 +333,8 @@
 <!-- Help Center app -->
 <script>
 (function(){
-  const API = 'https://api.kclautx.com';
+  // const API = 'https://api.kclautx.com'; // live — re-enable for production
+  const API = 'http://localhost:8000'; // local testing
   const PAGE = location.pathname; // keeps clean (/help) or file (/help.html) URLs working
   const root = document.getElementById('help-root');
   const searchInput = document.getElementById('help-search-input');
