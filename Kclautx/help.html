@@ -333,9 +333,7 @@
 <!-- Help Center app -->
 <script>
 (function(){
-  const API = (['localhost','127.0.0.1'].includes(location.hostname))
-    ? 'http://localhost:8000'
-    : 'https://api.kclautx.com';
+  const API = 'https://api.kclautx.com';
   const PAGE = location.pathname; // keeps clean (/help) or file (/help.html) URLs working
   const root = document.getElementById('help-root');
   const searchInput = document.getElementById('help-search-input');
