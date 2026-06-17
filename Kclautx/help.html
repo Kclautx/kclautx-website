@@ -156,6 +156,16 @@
   .article-body a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
   .article-body ul,.article-body ol{margin:0 0 1.1em;padding-left:1.4em}
   .article-body li{margin:.4em 0}
+  /* Quill stores both bullet & numbered lists as <ol><li data-list="..."> — render markers manually */
+  .article-body ol{counter-reset:ql-counter}
+  .article-body li[data-list]{list-style:none;position:relative}
+  .article-body li[data-list="bullet"]::before{content:"•";position:absolute;left:-1em;color:var(--ink-2)}
+  .article-body li[data-list="ordered"]{counter-increment:ql-counter}
+  .article-body li[data-list="ordered"]::before{content:counter(ql-counter) ".";position:absolute;left:-1.4em;color:var(--ink-2)}
+  /* Quill text alignment classes */
+  .article-body .ql-align-center{text-align:center}
+  .article-body .ql-align-right{text-align:right}
+  .article-body .ql-align-justify{text-align:justify}
   .article-body img{border-radius:12px;margin:1.2em 0;border:1px solid var(--line)}
   .article-body code{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:.1em .4em;font-size:.9em}
   .article-body pre{background:#0E1330;color:#E1E6F2;border-radius:12px;padding:16px 18px;overflow:auto}
@@ -307,7 +317,6 @@
 </footer>
 
 <!-- Markdown rendering (article bodies) -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
 <script>
   // Nav scroll style
@@ -492,7 +501,8 @@
     page.appendChild(el('hr', { class: 'div' }));
 
     const body = el('div', { class: 'article-body' });
-    const rawHtml = window.marked ? marked.parse(article.body || '') : (article.body || '');
+    // Article body is authored as HTML in the admin WYSIWYG editor; sanitize before injecting.
+    const rawHtml = article.body || '';
     body.innerHTML = window.DOMPurify ? DOMPurify.sanitize(rawHtml) : rawHtml;
     page.appendChild(body);
 
