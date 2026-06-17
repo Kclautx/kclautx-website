@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="modern.css">
+<link rel="stylesheet" href="modern.css?v=20260616">
 <style>
   :root{
     --blue:#2F7DFB;
@@ -105,7 +105,7 @@
 
   /* ── MAIN / SECTIONS ───────────────────────────────────── */
   .help-main{padding:64px 0 88px;min-height:46vh;background:linear-gradient(180deg,#F7F9FC 0%,#fff 220px)}
-  .breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 26px;font-size:13.5px;color:var(--muted)}
+  .breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:8px;max-width:760px;margin:0 auto 26px;font-size:13.5px;color:var(--muted)}
   .breadcrumb a{color:var(--muted);transition:color .15s}
   .breadcrumb a:hover{color:var(--blue)}
   .breadcrumb .sep{color:#C4CAD4}
@@ -128,10 +128,10 @@
   .col-card .count{margin:16px 0 0;font-size:12.5px;font-weight:600;color:var(--blue)}
 
   /* collection -> article list */
-  .collection-head{margin:0 0 28px}
+  .collection-head{margin:0 auto 28px;max-width:760px}
   .collection-head h1{margin:0;font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-0.02em}
   .collection-head p{margin:10px 0 0;color:var(--muted);font-size:15px;max-width:680px}
-  .article-list{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+  .article-list{max-width:760px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
   .article-row{
     display:flex;align-items:center;justify-content:space-between;gap:16px;
     padding:18px 22px;border-bottom:1px solid var(--line);transition:background .15s;
@@ -144,7 +144,7 @@
   .article-row:hover .chev{color:var(--blue);transform:translateX(3px)}
 
   /* article page */
-  .article-page{max-width:760px}
+  .article-page{max-width:760px;margin:0 auto}
   .article-page h1{margin:0;font-size:clamp(28px,3.4vw,38px);font-weight:800;letter-spacing:-0.025em}
   .article-page .subtitle{margin:10px 0 0;color:var(--muted);font-size:16px}
   .article-page hr.div{border:none;border-top:1px solid var(--line);margin:28px 0}
@@ -292,8 +292,12 @@
       <div class="foot-col">
         <h5>Legal</h5>
         <ul>
-          <li><a href="/terms">Terms of Use</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/cookie">Cookie Policy</a></li>
+          <li><a href="/aml-kyc">AML/KYC Policy</a></li>
+          <li><a href="/risk-disclosure">Risk Disclosure</a></li>
+          <li><a href="/account-restriction">Account Restriction</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -301,11 +305,12 @@
         <ul>
           <li><a href="/help">Help Center</a></li>
           <li><a href="/support">Contact Support</a></li>
-          <li><a href="mailto:support@kclautmedia.com">support@kclautmedia.com</a></li>
+          <li><a href="mailto:support@kclautx.com">support@kclautx.com</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
+      <div class="foot-disclaimer" style="flex:1 1 100%;margin-bottom:6px;font-size:12px;line-height:1.7;color:rgba(255,255,255,0.42)">KclautX maintains compliance and risk management measures aligned with applicable regulatory obligations and industry standards. Certain services may be supported through regulated third-party providers where applicable.</div>
       <div>&copy; <span class="footYear">2026</span> KclautX. All rights reserved.</div>
       <div class="foot-bottom-links">
         <a href="/terms">Terms</a>
@@ -541,6 +546,6 @@
   else renderHome();
 })();
 </script>
-<script src="modern.js"></script>
+<script src="modern.js?v=20260616"></script>
 </body>
 </html>
