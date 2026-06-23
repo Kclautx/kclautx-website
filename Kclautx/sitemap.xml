@@ -49,6 +49,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://kclautx.com/blog/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kclautx.com/blog/buying-gift-cards-from-informal-sellers</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kclautx.com/blog/electricity-token-not-showing</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kclautx.com/blog/sent-crypto-to-the-wrong-network</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://kclautx.com/terms</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>yearly</changefreq>
