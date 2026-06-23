@@ -1,0 +1,48 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Crypto network transfer illustration">
+  <defs>
+    <linearGradient id="bgc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1F6BE8"/>
+      <stop offset="0.55" stop-color="#5B5BE8"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <radialGradient id="glowc" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#A9C7FF" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#A9C7FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="coin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE9A6"/>
+      <stop offset="1" stop-color="#FFC83D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bgc)"/>
+  <circle cx="170" cy="130" r="240" fill="#ffffff" opacity="0.06"/>
+  <circle cx="1040" cy="580" r="280" fill="#000000" opacity="0.06"/>
+  <circle cx="600" cy="338" r="250" fill="url(#glowc)" opacity="0.5"/>
+  <!-- network links -->
+  <g stroke="#ffffff" stroke-opacity="0.4" stroke-width="3" fill="none">
+    <path d="M250 470 L470 300"/>
+    <path d="M470 300 L720 250"/>
+    <path d="M720 250 L940 360"/>
+    <path d="M470 300 L600 520"/>
+    <path d="M720 250 L820 470"/>
+  </g>
+  <!-- wrong-path arrow (dashed, red) -->
+  <path d="M470 300 C 600 130, 860 130, 980 200" stroke="#FF6B6B" stroke-width="5" fill="none" stroke-dasharray="14 12" stroke-linecap="round"/>
+  <path d="M980 200 l-26 -16 l4 30 z" fill="#FF6B6B"/>
+  <!-- nodes -->
+  <g>
+    <circle cx="250" cy="470" r="30" fill="#ffffff" opacity="0.9"/>
+    <circle cx="940" cy="360" r="30" fill="#ffffff" opacity="0.9"/>
+    <circle cx="600" cy="520" r="24" fill="#ffffff" opacity="0.7"/>
+    <circle cx="820" cy="470" r="22" fill="#ffffff" opacity="0.7"/>
+    <circle cx="470" cy="300" r="38" fill="#0B1330" opacity="0.45"/>
+    <circle cx="470" cy="300" r="38" fill="none" stroke="#ffffff" stroke-opacity="0.7" stroke-width="3"/>
+  </g>
+  <!-- coin -->
+  <g transform="translate(720,250)">
+    <circle r="62" fill="url(#coin)" stroke="#fff" stroke-opacity="0.6" stroke-width="4"/>
+    <circle r="62" fill="#000" opacity="0.04"/>
+    <path d="M-6 -34 L-6 34 M-22 -22 H10 a16 16 0 0 1 0 32 H-22 M-22 -6 H14 a16 16 0 0 1 0 32 H-22" stroke="#1858CC" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="#ffffff" opacity="0.85"><circle cx="320" cy="220" r="5"/><circle cx="1000" cy="470" r="6"/><circle cx="560" cy="180" r="4"/></g>
+</svg>

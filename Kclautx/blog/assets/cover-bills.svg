@@ -1,0 +1,47 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Electricity token payment illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1858CC"/>
+      <stop offset="0.5" stop-color="#3A6BF0"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <radialGradient id="spark" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFE08A" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFE08A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bolt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE9A6"/>
+      <stop offset="1" stop-color="#FFC83D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="1010" cy="120" r="240" fill="#ffffff" opacity="0.07"/>
+  <circle cx="150" cy="600" r="280" fill="#000000" opacity="0.06"/>
+  <g stroke="#ffffff" stroke-opacity="0.14" fill="none" stroke-width="2">
+    <path d="M0 150 Q 300 90 600 150 T 1200 150"/>
+    <path d="M0 525 Q 300 465 600 525 T 1200 525"/>
+  </g>
+  <circle cx="600" cy="338" r="230" fill="url(#spark)" opacity="0.55"/>
+  <!-- meter card -->
+  <g transform="translate(395,168)">
+    <rect x="6" y="14" width="410" height="350" rx="34" fill="#0B1330" opacity="0.35"/>
+    <rect width="410" height="350" rx="34" fill="#ffffff" opacity="0.10" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
+    <rect x="40" y="40" width="330" height="104" rx="14" fill="#0B1330"/>
+    <text x="64" y="92" font-family="ui-monospace, Menlo, monospace" font-size="34" fill="#7AB3FF" letter-spacing="7">4821</text>
+    <text x="64" y="128" font-family="ui-monospace, Menlo, monospace" font-size="22" fill="#9FC4FF" letter-spacing="6" opacity="0.85">7390 2256</text>
+    <circle cx="338" cy="74" r="9" fill="#36D27A"/>
+    <g fill="#ffffff" fill-opacity="0.9">
+      <rect x="60" y="178" width="78" height="54" rx="12"/>
+      <rect x="166" y="178" width="78" height="54" rx="12"/>
+      <rect x="272" y="178" width="78" height="54" rx="12"/>
+      <rect x="60" y="246" width="78" height="54" rx="12"/>
+      <rect x="166" y="246" width="78" height="54" rx="12"/>
+      <rect x="272" y="246" width="78" height="54" rx="12" fill="#FFC83D"/>
+    </g>
+  </g>
+  <!-- lightning bolt -->
+  <path d="M765 150 L690 360 L760 360 L700 540 L860 300 L778 300 L835 150 Z" fill="url(#bolt)" stroke="#fff" stroke-opacity="0.5" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#FFE08A">
+    <circle cx="300" cy="250" r="6"/><circle cx="930" cy="470" r="7"/><circle cx="250" cy="430" r="5"/><circle cx="980" cy="300" r="5"/>
+  </g>
+</svg>

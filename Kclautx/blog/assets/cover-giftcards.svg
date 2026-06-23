@@ -1,0 +1,40 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Verified gift card illustration">
+  <defs>
+    <linearGradient id="bgg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6D3BD6"/>
+      <stop offset="0.5" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#C13DA8"/>
+    </linearGradient>
+    <radialGradient id="glowg" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#FFD6F2" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#FFD6F2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E9ECF5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bgg)"/>
+  <circle cx="1030" cy="140" r="240" fill="#ffffff" opacity="0.07"/>
+  <circle cx="150" cy="580" r="270" fill="#000000" opacity="0.06"/>
+  <circle cx="560" cy="330" r="250" fill="url(#glowg)" opacity="0.6"/>
+  <!-- gift card -->
+  <g transform="rotate(-9 560 340)">
+    <rect x="350" y="210" width="460" height="280" rx="30" fill="#0B1330" opacity="0.3"/>
+    <rect x="344" y="200" width="460" height="280" rx="30" fill="url(#card)"/>
+    <rect x="344" y="200" width="460" height="76" rx="30" fill="#2F7DFB"/>
+    <rect x="344" y="246" width="460" height="30" fill="#2F7DFB"/>
+    <rect x="380" y="316" width="120" height="86" rx="12" fill="#FFC83D"/>
+    <g stroke="#C7CEDD" stroke-width="10" stroke-linecap="round">
+      <path d="M540 340 H760"/><path d="M540 372 H760"/><path d="M540 404 H700"/>
+    </g>
+    <!-- shine -->
+    <path d="M344 200 L520 200 L380 480 L344 480 Z" fill="#ffffff" opacity="0.18"/>
+  </g>
+  <!-- verified shield -->
+  <g transform="translate(760,360)">
+    <path d="M0 -86 L74 -54 V6 C74 58 40 96 0 112 C-40 96 -74 58 -74 6 V-54 Z" fill="#36D27A" stroke="#fff" stroke-width="5"/>
+    <path d="M-34 6 L-10 32 L40 -26" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="#ffffff" opacity="0.9"><circle cx="300" cy="200" r="6"/><circle cx="980" cy="470" r="7"/><circle cx="250" cy="430" r="5"/><circle cx="900" cy="180" r="5"/></g>
+</svg>
