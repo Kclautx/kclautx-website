@@ -1,0 +1,22 @@
+# KclautX
+
+> KclautX is a Nigerian fintech platform to buy and sell crypto, exchange gift cards for instant cash, and pay bills — all from one secure, KYC-verified app.
+
+## Services
+- [Buy and Sell Crypto](https://kclautx.com/buy-sell-crypto/): Trade Bitcoin, USDT, Ethereum and more at competitive rates with instant Naira settlement.
+- [Gift Card Exchange](https://kclautx.com/gift-card-exchange/): Sell Amazon, Steam, iTunes, Google Play and 100+ gift cards for instant cash.
+- [Bill Payment](https://kclautx.com/bill-payment/): Buy airtime and data, pay electricity, TV subscriptions and more instantly.
+- [All Services](https://kclautx.com/services/): Overview of everything KclautX offers.
+
+## Company
+- [About Us](https://kclautx.com/about): Who KclautX is and what we do.
+- [Help Center](https://kclautx.com/help): Guides and answers to common questions.
+- [Support](https://kclautx.com/support): Contact channels and assistance.
+
+## Legal
+- [Terms of Service](https://kclautx.com/terms)
+- [Privacy Policy](https://kclautx.com/privacy)
+- [Cookie Policy](https://kclautx.com/cookie)
+- [AML/KYC Policy](https://kclautx.com/aml-kyc)
+- [Risk Disclosure](https://kclautx.com/risk-disclosure)
+- [Account Restriction](https://kclautx.com/account-restriction)
