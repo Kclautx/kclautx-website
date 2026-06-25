@@ -61,6 +61,43 @@
   }
 })();
 
+// ============ Cursor glow (site-wide, matches landing page) ============
+(function(){
+  if (matchMedia('(hover:none)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Inject the glow styles once, so every page behaves the same even if it
+  // doesn't link the shared stylesheet.
+  if (!document.getElementById('kx-cursor-glow-css')) {
+    var st = document.createElement('style');
+    st.id = 'kx-cursor-glow-css';
+    st.textContent =
+      '.cursor-glow{position:fixed;left:0;top:0;pointer-events:none;z-index:9999;' +
+      'width:520px;height:520px;border-radius:50%;' +
+      'background:radial-gradient(circle, rgba(47,125,251,.18) 0%, rgba(47,125,251,.06) 35%, transparent 70%);' +
+      'transform:translate(-50%,-50%);transition:opacity .3s, transform .15s ease-out;' +
+      'mix-blend-mode:multiply;opacity:0}' +
+      '.cursor-glow.on{opacity:1}' +
+      '@media (hover:none){.cursor-glow{display:none}}';
+    document.head.appendChild(st);
+  }
+
+  // If a page already created its own glow (e.g. the homepage inline script),
+  // don't add a second one.
+  if (document.querySelector('.cursor-glow')) return;
+
+  var g = document.createElement('div');
+  g.className = 'cursor-glow';
+  document.body.appendChild(g);
+  var x = 0, y = 0, tx = 0, ty = 0;
+  document.addEventListener('mousemove', function(e){ tx = e.clientX; ty = e.clientY; g.classList.add('on'); });
+  document.addEventListener('mouseleave', function(){ g.classList.remove('on'); });
+  (function loop(){
+    x += (tx - x) * 0.15; y += (ty - y) * 0.15;
+    g.style.transform = 'translate(' + x + 'px,' + y + 'px) translate(-50%,-50%)';
+    requestAnimationFrame(loop);
+  })();
+})();
+
 // ============ Cookie consent ============
 (function(){
   const KEY = 'kx_cookie_consent', VER = 1;
