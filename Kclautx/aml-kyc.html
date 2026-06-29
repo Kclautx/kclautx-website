@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<title>AML/KYC Compliance Policy | KclautX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="modern.css?v=20260616">
+<style>
+  :root{
+    --blue:#2F7DFB;--blue-600:#1F6BE8;--blue-50:#EAF1FE;
+    --ink:#0E0E10;--muted:#6B7280;--line:#E7EAEE;--bg:#FFFFFF;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  .doc-wrap{max-width:760px;margin:0 auto;padding:0 32px}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);-webkit-backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid transparent;transition:background .3s, box-shadow .3s, border-color .3s}
+  .nav.scrolled{border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(0,0,0,.04)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo img{height:28px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:36px}
+  .nav-links a{color:var(--ink);font-weight:500;font-size:15px;transition:color .15s}
+  .nav-links a:hover{color:var(--blue)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 22px;border-radius:10px;font-weight:600;font-size:14.5px;transition:transform .12s, background .15s, box-shadow .2s}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 1px 2px rgba(47,125,251,.25);position:relative;overflow:hidden}
+  .btn-primary:hover{background:var(--blue-600);transform:translateY(-2px);box-shadow:0 10px 24px rgba(47,125,251,.35)}
+
+  .doc-banner{position:relative;background:linear-gradient(135deg,#3F8DFB 0%,#1F6BE8 100%);padding:56px 0;text-align:center;color:#fff;overflow:hidden}
+  .doc-banner::before{content:"";position:absolute;inset:0;opacity:.55;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 240' preserveAspectRatio='none'><g fill='none' stroke='white' stroke-width='1.2' stroke-opacity='.4'><path d='M0 60 Q 180 20 360 60 T 720 60 T 1080 60 T 1440 60'/><path d='M0 100 Q 180 60 360 100 T 720 100 T 1080 100 T 1440 100'/><path d='M0 140 Q 180 100 360 140 T 720 140 T 1080 140 T 1440 140'/><path d='M0 180 Q 180 140 360 180 T 720 180 T 1080 180 T 1440 180'/></g></svg>");background-size:100% 100%;background-repeat:no-repeat}
+  .doc-banner h1{position:relative;margin:0;font-size:clamp(34px,4.4vw,46px);font-weight:800;letter-spacing:-0.02em}
+
+  .doc{padding:64px 0 96px}
+  .doc h2{margin:36px 0 12px;font-size:17px;font-weight:700;letter-spacing:-0.005em}
+  .doc h2:first-child{margin-top:0}
+  .doc p{margin:0 0 14px;color:#3F4654;font-size:14.5px}
+  .doc ul{margin:0 0 14px;padding-left:22px;color:#3F4654;font-size:14.5px}
+  .doc ul li{margin-bottom:6px}
+  .doc h3{margin:22px 0 8px;font-size:15px;font-weight:700;letter-spacing:-0.005em;color:#0E0E10}
+  .doc .doc-meta{color:#6B7280;font-size:13px;margin:0 0 30px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .doc a{color:var(--blue);text-decoration:none}
+  .doc a:hover{text-decoration:underline}
+  .doc li strong{color:#0E0E10}
+
+  footer{position:relative;padding:72px 0 0;background:linear-gradient(180deg,#0B1330 0%,#060B22 100%);color:#E1E6F2;overflow:hidden;isolation:isolate}
+  footer::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#2F7DFB 0%,#7AB3FF 50%,#2F7DFB 100%);z-index:1}
+  footer::after{content:"";position:absolute;right:-120px;top:-160px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(47,125,251,0.22),transparent 70%);pointer-events:none}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px;position:relative;z-index:1}
+  .foot-brand .logo img{filter:brightness(0) invert(1);height:30px}
+  .foot-brand p{margin:20px 0 26px;color:rgba(255,255,255,0.62);font-size:13.5px;line-height:1.65;max-width:280px}
+  .socials{display:flex;gap:10px}
+  .soc{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.05);color:#fff;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.1);transition:background .2s, border-color .2s, transform .2s, box-shadow .2s}
+  .soc:hover{background:linear-gradient(135deg,var(--blue),var(--blue-600));border-color:transparent;transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(47,125,251,0.5)}
+  .foot-col h5{margin:0 0 18px;font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#fff;display:inline-flex;align-items:center;gap:8px}
+  .foot-col h5::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px rgba(47,125,251,0.18)}
+  .foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .foot-col a{color:rgba(255,255,255,0.65);font-size:13.5px;display:inline-flex;align-items:center;gap:6px;transition:color .15s, transform .15s}
+  .foot-col a::before{content:"→";font-size:11px;opacity:0;transition:opacity .15s}
+  .foot-col a:hover{color:#fff;transform:translateX(3px)}
+  .foot-col a:hover::before{opacity:0.55}
+  .foot-bottom{margin-top:64px;padding:22px 0 24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12.5px;color:rgba(255,255,255,0.5);position:relative;z-index:1}
+  .foot-bottom a{color:rgba(255,255,255,0.6);transition:color .15s}
+  .foot-bottom a:hover{color:#fff}
+  .foot-bottom-links{display:flex;gap:22px;flex-wrap:wrap}
+
+  @media (max-width:980px){
+    .nav-links{gap:20px}
+    .nav-links a:not(.btn){display:none}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-bottom{margin-top:48px;flex-direction:column;align-items:flex-start;gap:14px;text-align:left}
+    .foot-bottom-links{gap:18px}
+  }
+  @media (max-width:560px){
+    footer{padding-top:48px}
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+    .foot-brand p{max-width:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="KclautX"><img src="kclautx-logo.png" alt="KclautX" /></a>
+    <nav class="nav-links">
+      <a href="/buy-sell-crypto/">Trade Cryptocurrency</a>
+      <a href="/gift-card-exchange/">Trade Giftcards</a>
+      <a href="/bill-payment/">Pay Bills</a>
+      <a href="/blog">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<section class="doc-banner"><h1>AML/KYC Compliance Policy</h1></section>
+
+<section class="doc">
+  <div class="doc-wrap">
+    <p class="doc-meta">Effective Date: 15 June 2026 &nbsp;|&nbsp; Last Updated: 15 June 2026 &nbsp;|&nbsp; Version: 1.0</p>
+        <h2>Introduction</h2>
+        <p>KclautX is committed to maintaining a strong Anti-Money Laundering (AML), Counter-Terrorist Financing (CFT), Counter-Proliferation Financing (CPF), and Know Your Customer (KYC) compliance framework designed to promote platform integrity, user safety, and regulatory accountability.</p>
+        <p>As part of our commitment to responsible financial operations, KclautX implements risk-based compliance controls aligned with applicable laws, industry standards, regulatory expectations, and operational risk management practices.</p>
+        <p>KclautX services are intended solely for individuals who are eighteen (18) years of age or older. Persons under the age of 18 are prohibited from accessing or using the platform.</p>
+        <h2>Know Your Customer (KYC)</h2>
+        <p>KclautX requires identity verification for users accessing certain platform services, transaction functionalities, or higher transaction limits.</p>
+        <p>Verification measures may include, but are not limited to:</p>
+        <ul>
+            <li>Full legal name verification</li>
+            <li>Government-issued identification review</li>
+            <li>BVN or identity verification checks</li>
+            <li>Selfie/liveness verification</li>
+            <li>Address verification</li>
+            <li>Risk-based customer screening</li>
+            <li>Enhanced verification for higher-risk accounts</li>
+        </ul>
+        <p>Users may be required to provide additional information or supporting documentation where necessary.</p>
+        <p>Failure to complete applicable verification requirements may result in restricted access to platform services or account limitations.</p>
+        <h2>KYC Rejection &amp; Reapplication</h2>
+        <p>KclautX reserves the right to reject verification applications where submitted information, documentation, or user activity fails to satisfy applicable compliance or risk assessment requirements.</p>
+        <p>Users whose verification requests are rejected may contact support for clarification or reapply where documentation deficiencies, inconsistencies, or verification issues have been resolved.</p>
+        <h2>Transaction Monitoring</h2>
+        <p>KclautX maintains transaction monitoring controls designed to identify unusual, suspicious, fraudulent, or potentially prohibited activity.</p>
+        <p>Activities subject to monitoring may include:</p>
+        <ul>
+            <li>Unusual transaction patterns</li>
+            <li>Rapid movement of funds</li>
+            <li>Structuring or threshold avoidance behavior</li>
+            <li>Suspicious wallet interactions</li>
+            <li>Fraud-related indicators</li>
+            <li>Sanctions-related exposure</li>
+            <li>Account misuse or abuse</li>
+            <li>High-risk transactional behavior</li>
+            <li>External wallet risk exposure</li>
+        </ul>
+        <p>Monitoring activities may be conducted using automated systems, manual reviews, blockchain analytics tools, risk-based investigative procedures, and third-party compliance technologies.</p>
+        <h2>Sanctions, PEP &amp; Adverse Media Screening</h2>
+        <p>KclautX may screen users, wallets, counterparties, and transactions against:</p>
+        <ul>
+            <li>applicable sanctions watchlists</li>
+            <li>politically exposed person (PEP) databases</li>
+            <li>adverse media intelligence sources</li>
+            <li>fraud intelligence databases</li>
+            <li>and other relevant risk intelligence systems.</li>
+        </ul>
+        <p>The platform reserves the right to restrict, suspend, delay, escalate, or terminate access where elevated compliance, sanctions, fraud, or regulatory risks are identified.</p>
+        <h2>Enhanced Due Diligence (EDD)</h2>
+        <p>KclautX may apply Enhanced Due Diligence (EDD) measures to users, accounts, wallets, or transactions presenting elevated risk indicators.</p>
+        <p>EDD measures may include:</p>
+        <ul>
+            <li>Source of funds verification</li>
+            <li>Source of wealth review</li>
+            <li>Additional identity documentation</li>
+            <li>Transaction purpose clarification</li>
+            <li>Additional wallet verification</li>
+            <li>Ongoing account monitoring</li>
+            <li>Manual compliance investigation</li>
+        </ul>
+        <p>Enhanced reviews may result in temporary delays while compliance checks are completed.</p>
+        <h2>Prohibited Activities</h2>
+        <p>Users are strictly prohibited from using KclautX services for activities including, but not limited to:</p>
+        <ul>
+            <li>Money laundering</li>
+            <li>Terrorist financing</li>
+            <li>Fraudulent activity</li>
+            <li>Sanctions evasion</li>
+            <li>Identity theft</li>
+            <li>Unauthorized account usage</li>
+            <li>Human trafficking</li>
+            <li>Proliferation financing</li>
+            <li>Illegal financial activity</li>
+            <li>Use of stolen or unauthorized payment methods</li>
+            <li>Use of the platform on behalf of undisclosed third parties</li>
+        </ul>
+        <h2>Account Restrictions &amp; Compliance Actions</h2>
+        <p>KclautX reserves the right to:</p>
+        <ul>
+            <li>request additional verification</li>
+            <li>delay or restrict withdrawals</li>
+            <li>suspend transaction activity</li>
+            <li>freeze or restrict accounts</li>
+            <li>refuse transactions</li>
+            <li>escalate suspicious activity for compliance review</li>
+            <li>reject or reverse transactions where operationally necessary</li>
+            <li>or cooperate with lawful regulatory or law enforcement requests.</li>
+        </ul>
+        <p>Such actions may be taken where necessary to:</p>
+        <ul>
+            <li>protect platform integrity</li>
+            <li>comply with legal or regulatory obligations</li>
+            <li>prevent fraud or financial crime</li>
+            <li>or mitigate operational or compliance risks.</li>
+        </ul>
+        <h2>Forfeiture &amp; Regulatory Escalation</h2>
+        <p>Funds, assets, or transactions connected to confirmed prohibited activity, sanctions exposure, fraud, money laundering, terrorist financing, or other unlawful conduct may be subject to:</p>
+        <ul>
+            <li>restriction</li>
+            <li>freezing</li>
+            <li>forfeiture</li>
+            <li>regulatory reporting</li>
+            <li>or transfer to competent authorities or law enforcement agencies where legally required.</li>
+        </ul>
+        <p>In such circumstances, affected funds or assets may not be returned to the user.</p>
+        <h2>Regulatory Cooperation</h2>
+        <p>KclautX may cooperate with relevant regulatory authorities, financial institutions, payment partners, blockchain analytics providers, compliance vendors, and law enforcement agencies where legally required or operationally necessary.</p>
+        <h2>Data Retention</h2>
+        <p>KclautX retains AML/KYC records, transaction records, compliance reviews, screening results, and related documentation for the period required under applicable law and regulatory obligations.</p>
+        <p>Such records are generally retained for not less than five (5) years following account closure or the date of the relevant transaction, whichever is later.</p>
+        <h2>User Responsibility</h2>
+        <p>Users are responsible for ensuring that:</p>
+        <ul>
+            <li>information submitted to KclautX is accurate and up to date</li>
+            <li>platform services are not used for unlawful purposes</li>
+            <li>accounts are not shared or operated on behalf of unauthorized third parties</li>
+            <li>and transactions conducted through the platform comply with applicable laws and regulations.</li>
+        </ul>
+        <p>Users may be subject to additional review where inconsistencies, suspicious behavior, or elevated compliance risks are identified.</p>
+        <h2>No Guarantee of Platform Access</h2>
+        <p>Completion of KYC verification does not guarantee continued or unrestricted access to KclautX services.</p>
+        <p>Platform access, transaction capabilities, and account functionality remain subject to ongoing compliance review, operational risk assessment, legal obligations, and internal risk management controls.</p>
+        <h2>Policy Updates</h2>
+        <p>KclautX reserves the right to modify or update this policy at any time to reflect operational, legal, regulatory, technological, or business changes.</p>
+        <p>Updated versions become effective upon publication on the platform.</p>
+        <p>Continued use of the platform constitutes acceptance of the updated policy.</p>
+        <h2>Contact</h2>
+        <p>For inquiries, please contact:</p>
+        <p><a href="mailto:support@kclautx.com">support@kclautx.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="/" class="logo" aria-label="KclautX"><img src="kclautx-logo.png" alt="KclautX" /></a>
+        <p>Your trusted exchange for crypto, giftcards and bills built for Nigeria, ready for the world.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/kclautx" class="soc" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://x.com/kclautx" class="soc" aria-label="X (Twitter)" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l-6 8 6 8h-3l-4.5-6L5 20H3l6.5-8L3 4h3l4.5 6L15 4h3z"/></svg></a>
+          <a href="https://t.me/kclautx" class="soc" aria-label="Telegram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L2 11l6 2 2 7 4-4 5 5z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col"><h5>Company</h5><ul><li><a href="/about">About Us</a></li></ul></div>
+      <div class="foot-col"><h5>Legal</h5><ul>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/cookie">Cookie Policy</a></li>
+          <li><a href="/aml-kyc">AML/KYC Policy</a></li>
+          <li><a href="/risk-disclosure">Risk Disclosure</a></li>
+          <li><a href="/account-restriction">Account Restriction</a></li>
+        </ul></div>
+      <div class="foot-col"><h5>Support</h5><ul><li><a href="/help">Help Center</a></li><li><a href="/support">Contact Support</a></li><li><a href="mailto:support@kclautx.com">support@kclautx.com</a></li><li><a href="https://t.me/kclautx" target="_blank" rel="noopener">Telegram Chat</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <div>&copy; <span class="footYear">2026</span> KclautX. All rights reserved.</div>
+      <div class="foot-bottom-links">
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/help">Help</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { if (window.scrollY > 4) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); });
+</script>
+<script src="modern.js?v=20260625b"></script>
+</body>
+</html>

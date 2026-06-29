@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "REPLACE_TEAMID.com.kclautx.app",
+        "paths": [
+          "/app/*",
+          "/buy-sell-crypto/*",
+          "/gift-card-exchange/*",
+          "/bill-payment/*",
+          "/blog/*"
+        ]
+      }
+    ]
+  }
+}

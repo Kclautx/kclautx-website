@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<title>Cookie Policy | KclautX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="modern.css?v=20260616">
+<style>
+  :root{
+    --blue:#2F7DFB;--blue-600:#1F6BE8;--blue-50:#EAF1FE;
+    --ink:#0E0E10;--muted:#6B7280;--line:#E7EAEE;--bg:#FFFFFF;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  .doc-wrap{max-width:760px;margin:0 auto;padding:0 32px}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);-webkit-backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid transparent;transition:background .3s, box-shadow .3s, border-color .3s}
+  .nav.scrolled{border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(0,0,0,.04)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo img{height:28px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:36px}
+  .nav-links a{color:var(--ink);font-weight:500;font-size:15px;transition:color .15s}
+  .nav-links a:hover{color:var(--blue)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 22px;border-radius:10px;font-weight:600;font-size:14.5px;transition:transform .12s, background .15s, box-shadow .2s}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 1px 2px rgba(47,125,251,.25);position:relative;overflow:hidden}
+  .btn-primary:hover{background:var(--blue-600);transform:translateY(-2px);box-shadow:0 10px 24px rgba(47,125,251,.35)}
+
+  .doc-banner{position:relative;background:linear-gradient(135deg,#3F8DFB 0%,#1F6BE8 100%);padding:56px 0;text-align:center;color:#fff;overflow:hidden}
+  .doc-banner::before{content:"";position:absolute;inset:0;opacity:.55;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 240' preserveAspectRatio='none'><g fill='none' stroke='white' stroke-width='1.2' stroke-opacity='.4'><path d='M0 60 Q 180 20 360 60 T 720 60 T 1080 60 T 1440 60'/><path d='M0 100 Q 180 60 360 100 T 720 100 T 1080 100 T 1440 100'/><path d='M0 140 Q 180 100 360 140 T 720 140 T 1080 140 T 1440 140'/><path d='M0 180 Q 180 140 360 180 T 720 180 T 1080 180 T 1440 180'/></g></svg>");background-size:100% 100%;background-repeat:no-repeat}
+  .doc-banner h1{position:relative;margin:0;font-size:clamp(34px,4.4vw,46px);font-weight:800;letter-spacing:-0.02em}
+
+  .doc{padding:64px 0 96px}
+  .doc h2{margin:36px 0 12px;font-size:17px;font-weight:700;letter-spacing:-0.005em}
+  .doc h2:first-child{margin-top:0}
+  .doc p{margin:0 0 14px;color:#3F4654;font-size:14.5px}
+  .doc ul{margin:0 0 14px;padding-left:22px;color:#3F4654;font-size:14.5px}
+  .doc ul li{margin-bottom:6px}
+  .doc h3{margin:22px 0 8px;font-size:15px;font-weight:700;letter-spacing:-0.005em;color:#0E0E10}
+  .doc .doc-meta{color:#6B7280;font-size:13px;margin:0 0 30px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .doc a{color:var(--blue);text-decoration:none}
+  .doc a:hover{text-decoration:underline}
+  .doc li strong{color:#0E0E10}
+
+  footer{position:relative;padding:72px 0 0;background:linear-gradient(180deg,#0B1330 0%,#060B22 100%);color:#E1E6F2;overflow:hidden;isolation:isolate}
+  footer::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#2F7DFB 0%,#7AB3FF 50%,#2F7DFB 100%);z-index:1}
+  footer::after{content:"";position:absolute;right:-120px;top:-160px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(47,125,251,0.22),transparent 70%);pointer-events:none}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px;position:relative;z-index:1}
+  .foot-brand .logo img{filter:brightness(0) invert(1);height:30px}
+  .foot-brand p{margin:20px 0 26px;color:rgba(255,255,255,0.62);font-size:13.5px;line-height:1.65;max-width:280px}
+  .socials{display:flex;gap:10px}
+  .soc{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.05);color:#fff;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.1);transition:background .2s, border-color .2s, transform .2s, box-shadow .2s}
+  .soc:hover{background:linear-gradient(135deg,var(--blue),var(--blue-600));border-color:transparent;transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(47,125,251,0.5)}
+  .foot-col h5{margin:0 0 18px;font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#fff;display:inline-flex;align-items:center;gap:8px}
+  .foot-col h5::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px rgba(47,125,251,0.18)}
+  .foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .foot-col a{color:rgba(255,255,255,0.65);font-size:13.5px;display:inline-flex;align-items:center;gap:6px;transition:color .15s, transform .15s}
+  .foot-col a::before{content:"→";font-size:11px;opacity:0;transition:opacity .15s}
+  .foot-col a:hover{color:#fff;transform:translateX(3px)}
+  .foot-col a:hover::before{opacity:0.55}
+  .foot-bottom{margin-top:64px;padding:22px 0 24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12.5px;color:rgba(255,255,255,0.5);position:relative;z-index:1}
+  .foot-bottom a{color:rgba(255,255,255,0.6);transition:color .15s}
+  .foot-bottom a:hover{color:#fff}
+  .foot-bottom-links{display:flex;gap:22px;flex-wrap:wrap}
+
+  @media (max-width:980px){
+    .nav-links{gap:20px}
+    .nav-links a:not(.btn){display:none}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-bottom{margin-top:48px;flex-direction:column;align-items:flex-start;gap:14px;text-align:left}
+    .foot-bottom-links{gap:18px}
+  }
+  @media (max-width:560px){
+    footer{padding-top:48px}
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+    .foot-brand p{max-width:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="KclautX"><img src="kclautx-logo.png" alt="KclautX" /></a>
+    <nav class="nav-links">
+      <a href="/buy-sell-crypto/">Trade Cryptocurrency</a>
+      <a href="/gift-card-exchange/">Trade Giftcards</a>
+      <a href="/bill-payment/">Pay Bills</a>
+      <a href="/blog">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<section class="doc-banner"><h1>Cookie Policy</h1></section>
+
+<section class="doc">
+  <div class="doc-wrap">
+    <p class="doc-meta">Effective Date: 15 June 2026 &nbsp;|&nbsp; Last Updated: 15 June 2026 &nbsp;|&nbsp; Version: 1.0</p>
+        <h2>Introduction</h2>
+        <p>This Cookie Policy explains how KclautX uses cookies and similar technologies when users access or interact with our website, mobile applications, and related services.</p>
+        <p>This Policy should be read together with the KclautX Privacy Policy and any other applicable data protection notices published by KclautX.</p>
+        <p>KclautX processes cookie-related data in accordance with applicable privacy and data protection obligations, including the Nigeria Data Protection Act (NDPA) 2023.</p>
+        <h2>What Are Cookies?</h2>
+        <p>Cookies are small text files stored on a user’s device when visiting a website or using an application.</p>
+        <p>Cookies help improve:</p>
+        <ul>
+            <li>platform functionality</li>
+            <li>security</li>
+            <li>user experience</li>
+            <li>analytics</li>
+            <li>operational performance</li>
+            <li>and fraud prevention capabilities</li>
+        </ul>
+        <p>Cookies may be:</p>
+        <ul>
+            <li>temporary session cookies, which expire once a session ends; or</li>
+            <li>persistent cookies, which remain on a device for a defined period</li>
+        </ul>
+        <h2>How KclautX Uses Cookies</h2>
+        <p>KclautX may use cookies and similar technologies for the following purposes:</p>
+        <h3>Essential &amp; Authentication Cookies</h3>
+        <p>These cookies are necessary for platform functionality, security, and authentication.</p>
+        <p>They may be used to:</p>
+        <ul>
+            <li>maintain secure login sessions</li>
+            <li>authenticate users</li>
+            <li>prevent unauthorized access</li>
+            <li>support account security</li>
+            <li>remember session preferences</li>
+            <li>and enable core platform functionality</li>
+        </ul>
+        <p>Without these cookies, certain platform features may not function properly.</p>
+        <p>Essential, authentication, and security-related cookies may be processed on the basis of legitimate operational and security interests necessary for the proper functioning of the platform.</p>
+        <h3>Analytics &amp; Performance Cookies</h3>
+        <p>These cookies help KclautX understand how users interact with the platform and improve overall service performance.</p>
+        <p>They may collect information such as:</p>
+        <ul>
+            <li>pages visited</li>
+            <li>session duration</li>
+            <li>device information</li>
+            <li>browser type</li>
+            <li>traffic sources</li>
+            <li>user interaction patterns</li>
+            <li>and error diagnostics</li>
+        </ul>
+        <p>Analytics data helps improve:</p>
+        <ul>
+            <li>usability</li>
+            <li>security</li>
+            <li>operational efficiency</li>
+            <li>and service reliability</li>
+        </ul>
+        <p>Analytics and other non-essential cookies shall only be activated where users provide valid consent.</p>
+        <h3>Functional Cookies</h3>
+        <p>Functional cookies help personalize user experience and improve convenience.</p>
+        <p>These cookies may remember:</p>
+        <ul>
+            <li>language preferences</li>
+            <li>region settings</li>
+            <li>display preferences</li>
+            <li>and user interface customizations</li>
+        </ul>
+        <p>Functional cookies shall only be activated where users provide valid consent.</p>
+        <h3>Security &amp; Fraud Prevention Technologies</h3>
+        <p>KclautX may use cookies and related technologies to:</p>
+        <ul>
+            <li>detect suspicious activity</li>
+            <li>prevent fraud and abuse</li>
+            <li>identify unusual login behavior</li>
+            <li>protect against unauthorized access</li>
+            <li>maintain platform integrity</li>
+            <li>and support AML, compliance, and security obligations</li>
+        </ul>
+        <p>These technologies help support platform security, fraud prevention, and compliance monitoring activities.</p>
+        <h2>Third-Party Services</h2>
+        <p>KclautX may utilize trusted third-party service providers or processors for:</p>
+        <ul>
+            <li>website analytics and performance monitoring</li>
+            <li>authentication and account security</li>
+            <li>fraud prevention and risk monitoring</li>
+            <li>infrastructure and technical support services</li>
+            <li>and platform functionality optimization</li>
+        </ul>
+        <p>These providers may use cookies or similar technologies necessary for their respective services and may process limited technical, device, or usage-related information subject to applicable confidentiality, security, privacy, and data protection obligations.</p>
+        <p>Third-party providers may also maintain independent privacy or cookie policies governing their services.</p>
+        <h2>NDPA 2023 Compliance &amp; Consent</h2>
+        <p>KclautX processes personal data collected through cookies and similar technologies in accordance with the Nigeria Data Protection Act (NDPA) 2023 and applicable data protection obligations.</p>
+        <p>KclautX shall not rely on implied consent for analytics, functional, personalization, or other non-essential cookies.</p>
+        <p>Users may:</p>
+        <ul>
+            <li>accept or reject non-essential cookies</li>
+            <li>manage cookie preferences by category</li>
+            <li>withdraw previously granted consent</li>
+            <li>and modify cookie preferences at any time through available cookie settings</li>
+        </ul>
+        <h2>Cookie Consent Banner &amp; Preference Management</h2>
+        <p>On first visit to the website or first launch of the mobile application, users shall be presented with a cookie consent notice or equivalent consent management interface allowing users to:</p>
+        <ul>
+            <li>accept all cookies</li>
+            <li>reject non-essential cookies</li>
+            <li>or customize cookie preferences by category</li>
+        </ul>
+        <p>Non-essential cookies shall not be activated prior to obtaining valid user consent.</p>
+        <p>Users may subsequently update or withdraw their preferences through available cookie settings or privacy controls.</p>
+        <h2>Managing Cookies</h2>
+        <p>Most web browsers allow users to:</p>
+        <ul>
+            <li>view cookies</li>
+            <li>delete cookies</li>
+            <li>block cookies</li>
+            <li>or restrict certain cookie categories</li>
+        </ul>
+        <p>Users may adjust browser or device settings to manage cookie preferences.</p>
+        <p>Please note that disabling certain cookies may affect platform functionality or limit access to some services.</p>
+        <h2>User Rights Under the NDPA 2023</h2>
+        <p>Subject to applicable law, users may exercise rights relating to personal data processed through cookies and similar technologies, including:</p>
+        <ul>
+            <li>the right to information</li>
+            <li>the right to access personal data</li>
+            <li>the right to withdraw consent</li>
+            <li>the right to request correction of inaccurate data</li>
+            <li>the right to object to certain processing activities</li>
+            <li>and the right to request deletion where applicable</li>
+        </ul>
+        <p>Requests relating to personal data or cookie-related processing may be directed to: <a href="mailto:support@kclautx.com">support@kclautx.com</a></p>
+        <h2>Data Protection &amp; Privacy</h2>
+        <p>Cookies and related technologies may involve the collection of certain technical or usage-related information.</p>
+        <p>For more information regarding how KclautX processes personal data, please review the KclautX Privacy Policy.</p>
+        <h2>Policy Updates</h2>
+        <p>KclautX reserves the right to update or modify this Cookie Policy at any time to reflect:</p>
+        <ul>
+            <li>operational changes</li>
+            <li>legal or regulatory developments</li>
+            <li>technological updates</li>
+            <li>or changes to platform functionality</li>
+        </ul>
+        <p>Updated versions become effective upon publication on the platform.</p>
+        <h2>Contact</h2>
+        <p>For questions regarding this Cookie Policy, please contact: <a href="mailto:compliance@kclautx.com">compliance@kclautx.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="/" class="logo" aria-label="KclautX"><img src="kclautx-logo.png" alt="KclautX" /></a>
+        <p>Your trusted exchange for crypto, giftcards and bills built for Nigeria, ready for the world.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/kclautx" class="soc" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://x.com/kclautx" class="soc" aria-label="X (Twitter)" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l-6 8 6 8h-3l-4.5-6L5 20H3l6.5-8L3 4h3l4.5 6L15 4h3z"/></svg></a>
+          <a href="https://t.me/kclautx" class="soc" aria-label="Telegram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L2 11l6 2 2 7 4-4 5 5z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col"><h5>Company</h5><ul><li><a href="/about">About Us</a></li></ul></div>
+      <div class="foot-col"><h5>Legal</h5><ul>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/cookie">Cookie Policy</a></li>
+          <li><a href="/aml-kyc">AML/KYC Policy</a></li>
+          <li><a href="/risk-disclosure">Risk Disclosure</a></li>
+          <li><a href="/account-restriction">Account Restriction</a></li>
+        </ul></div>
+      <div class="foot-col"><h5>Support</h5><ul><li><a href="/help">Help Center</a></li><li><a href="/support">Contact Support</a></li><li><a href="mailto:support@kclautx.com">support@kclautx.com</a></li><li><a href="https://t.me/kclautx" target="_blank" rel="noopener">Telegram Chat</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <div>&copy; <span class="footYear">2026</span> KclautX. All rights reserved.</div>
+      <div class="foot-bottom-links">
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/help">Help</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { if (window.scrollY > 4) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); });
+</script>
+<script src="modern.js?v=20260625b"></script>
+</body>
+</html>
