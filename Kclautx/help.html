@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<title>Help Center | KclautX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="modern.css?v=20260616">
+<style>
+  :root{
+    --blue:#2F7DFB;
+    --blue-600:#1F6BE8;
+    --blue-700:#1858CC;
+    --blue-50:#EAF1FE;
+    --blue-100:#D6E4FE;
+    --ink:#0E0E10;
+    --ink-2:#1F2024;
+    --muted:#6B7280;
+    --line:#E7EAEE;
+    --bg:#FFFFFF;
+    --soft:#F7F9FC;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--ink);background:var(--bg);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;line-height:1.5;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+  [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--rd,0s), transform .8s cubic-bezier(.2,.7,.2,1) var(--rd,0s)}
+  [data-reveal].in{opacity:1;transform:none}
+
+  .cursor-glow{
+    position:fixed;left:0;top:0;pointer-events:none;z-index:9999;
+    width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle, rgba(47,125,251,.18) 0%, rgba(47,125,251,.06) 35%, transparent 70%);
+    transform:translate(-50%,-50%);transition:opacity .3s, transform .15s ease-out;
+    mix-blend-mode:multiply;opacity:0;
+  }
+  .cursor-glow.on{opacity:1}
+  @media (hover:none){.cursor-glow{display:none}}
+
+  /* NAV */
+  .nav{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(10px);-webkit-backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid transparent;transition:background .3s, box-shadow .3s, border-color .3s;
+  }
+  .nav.scrolled{border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(0,0,0,.04)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo img{height:28px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:36px}
+  .nav-links a{color:var(--ink);font-weight:500;font-size:15px;transition:color .15s}
+  .nav-links a.active{color:var(--blue)}
+  .nav-links a:hover{color:var(--blue)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 22px;border-radius:10px;font-weight:600;font-size:14.5px;transition:transform .12s, background .15s, box-shadow .2s}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 1px 2px rgba(47,125,251,.25);position:relative;overflow:hidden}
+  .btn-primary:hover{background:var(--blue-600);transform:translateY(-2px);box-shadow:0 10px 24px rgba(47,125,251,.35)}
+
+  /* ── HELP HERO ─────────────────────────────────────────── */
+  .help-hero{
+    position:relative;overflow:hidden;color:#fff;text-align:center;
+    padding:84px 0 96px;
+    background:linear-gradient(135deg,#2F7DFB 0%,#3A6BF0 38%,#8B5CF6 100%);
+  }
+  .help-hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(60% 80% at 15% 10%, rgba(255,255,255,.18), transparent 60%),
+      radial-gradient(50% 70% at 90% 30%, rgba(122,179,255,.35), transparent 60%);
+  }
+  .help-hero .inner{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:0 32px}
+  .help-hero .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;margin:0 0 16px;
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(255,255,255,.82);
+  }
+  .help-hero h1{
+    margin:0;font-size:clamp(32px,4.4vw,48px);font-weight:800;letter-spacing:-0.03em;
+    text-shadow:0 6px 30px rgba(0,0,0,.18);
+  }
+  .help-hero p{margin:14px auto 0;max-width:520px;color:rgba(255,255,255,.86);font-size:15.5px}
+  .help-search{
+    position:relative;max-width:620px;margin:30px auto 0;
+  }
+  .help-search input{
+    width:100%;height:60px;border-radius:16px;border:1px solid rgba(255,255,255,.28);
+    background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    color:#fff;font-size:16px;font-weight:500;padding:0 20px 0 54px;outline:none;
+    transition:background .2s, border-color .2s, box-shadow .2s;
+  }
+  .help-search input::placeholder{color:rgba(255,255,255,.72)}
+  .help-search input:focus{background:rgba(255,255,255,.24);border-color:rgba(255,255,255,.55);box-shadow:0 12px 40px -12px rgba(0,0,0,.4)}
+  .help-search .si{position:absolute;left:20px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.85)}
+
+  /* ── MAIN / SECTIONS ───────────────────────────────────── */
+  .help-main{padding:64px 0 88px;min-height:46vh;background:linear-gradient(180deg,#F7F9FC 0%,#fff 220px)}
+  .breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:8px;max-width:760px;margin:0 auto 26px;font-size:13.5px;color:var(--muted)}
+  .breadcrumb a{color:var(--muted);transition:color .15s}
+  .breadcrumb a:hover{color:var(--blue)}
+  .breadcrumb .sep{color:#C4CAD4}
+  .breadcrumb .cur{color:var(--ink-2);font-weight:600}
+
+  /* collection grid */
+  .col-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .col-card{
+    display:block;background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:26px 24px;transition:transform .25s, box-shadow .25s, border-color .25s;
+    box-shadow:0 1px 0 rgba(14,16,32,.03);
+  }
+  .col-card:hover{transform:translateY(-4px);border-color:transparent;box-shadow:0 26px 50px -24px rgba(47,125,251,.42)}
+  .col-card .ic{
+    width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:var(--blue-50);color:var(--blue);margin:0 0 16px;font-size:22px;
+  }
+  .col-card h3{margin:0 0 8px;font-size:17px;font-weight:700;letter-spacing:-0.01em}
+  .col-card p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.6}
+  .col-card .count{margin:16px 0 0;font-size:12.5px;font-weight:600;color:var(--blue)}
+
+  /* collection -> article list */
+  .collection-head{margin:0 auto 28px;max-width:760px}
+  .collection-head h1{margin:0;font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-0.02em}
+  .collection-head p{margin:10px 0 0;color:var(--muted);font-size:15px;max-width:680px}
+  .article-list{max-width:760px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+  .article-row{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:18px 22px;border-bottom:1px solid var(--line);transition:background .15s;
+  }
+  .article-row:last-child{border-bottom:none}
+  .article-row:hover{background:var(--soft)}
+  .article-row .t{font-size:15px;font-weight:600;color:var(--ink)}
+  .article-row .s{display:block;margin-top:3px;font-size:13px;font-weight:400;color:var(--muted)}
+  .article-row .chev{color:#B7BECB;flex:0 0 auto;transition:transform .2s, color .2s}
+  .article-row:hover .chev{color:var(--blue);transform:translateX(3px)}
+
+  /* article page */
+  .article-page{max-width:760px;margin:0 auto}
+  .article-page h1{margin:0;font-size:clamp(28px,3.4vw,38px);font-weight:800;letter-spacing:-0.025em}
+  .article-page .subtitle{margin:10px 0 0;color:var(--muted);font-size:16px}
+  .article-page hr.div{border:none;border-top:1px solid var(--line);margin:28px 0}
+  .article-body{color:var(--ink-2);font-size:16px;line-height:1.75;overflow-wrap:break-word;word-break:break-word}
+  /* Safety net: never let pasted/rich content (e.g. fixed-width tables from Word) exceed the column */
+  .article-body *{max-width:100%}
+  .article-body h1,.article-body h2,.article-body h3{letter-spacing:-0.02em;line-height:1.3;margin:1.6em 0 .6em;font-weight:700;color:var(--ink)}
+  .article-body h2{font-size:22px}
+  .article-body h3{font-size:18px}
+  .article-body p{margin:0 0 1.1em}
+  .article-body a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+  .article-body ul,.article-body ol{margin:0 0 1.1em;padding-left:1.4em}
+  .article-body li{margin:.4em 0}
+  /* Quill stores both bullet & numbered lists as <ol><li data-list="..."> — render markers manually */
+  .article-body ol{counter-reset:ql-counter}
+  .article-body li[data-list]{list-style:none;position:relative}
+  .article-body li[data-list="bullet"]::before{content:"•";position:absolute;left:-1em;color:var(--ink-2)}
+  .article-body li[data-list="ordered"]{counter-increment:ql-counter}
+  .article-body li[data-list="ordered"]::before{content:counter(ql-counter) ".";position:absolute;left:-1.4em;color:var(--ink-2)}
+  /* Quill text alignment classes */
+  .article-body .ql-align-center{text-align:center}
+  .article-body .ql-align-right{text-align:right}
+  .article-body .ql-align-justify{text-align:justify}
+  .article-body img{border-radius:12px;margin:1.2em 0;border:1px solid var(--line);max-width:100%;height:auto}
+  /* TinyMCE output: image captions + alignment */
+  .article-body figure{margin:1.4em 0;max-width:100%}
+  .article-body figure img{margin:0}
+  .article-body figure figcaption{font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
+  .article-body figure.align-center,.article-body img.mce-center{margin-left:auto;margin-right:auto;display:block}
+  .article-body code{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:.1em .4em;font-size:.9em}
+  .article-body pre{background:#0E1330;color:#E1E6F2;border-radius:12px;padding:16px 18px;max-width:100%;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+  .article-body table{display:block;width:100%;max-width:100%;overflow-x:auto;border-collapse:collapse}
+  .article-body pre code{background:none;border:none;color:inherit;padding:0}
+  .article-body blockquote{margin:0 0 1.1em;padding:6px 18px;border-left:3px solid var(--blue);background:var(--soft);border-radius:0 8px 8px 0;color:var(--ink-2)}
+
+  /* feedback */
+  .feedback{margin:44px 0 0;padding:28px;border-radius:16px;background:var(--soft);border:1px solid var(--line);text-align:center}
+  .feedback p{margin:0 0 16px;font-size:15px;font-weight:600;color:var(--ink-2)}
+  .feedback .faces{display:flex;justify-content:center;gap:14px}
+  .feedback .face{width:46px;height:46px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:22px;display:flex;align-items:center;justify-content:center;transition:transform .15s, box-shadow .2s, border-color .2s}
+  .feedback .face:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 12px 24px -12px rgba(47,125,251,.5)}
+  .feedback .thanks{color:var(--blue);font-weight:600;font-size:14.5px;margin:0}
+
+  /* back link */
+  .back-link{display:inline-flex;align-items:center;gap:6px;margin:0 0 22px;font-size:14px;font-weight:600;color:var(--blue)}
+  .back-link:hover{color:var(--blue-700)}
+
+  /* states */
+  .help-state{padding:60px 0;text-align:center;color:var(--muted);font-size:15px}
+  .help-skeleton{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .sk-card{height:168px;border-radius:16px;background:linear-gradient(100deg,#eef1f6 30%,#f6f8fb 50%,#eef1f6 70%);background-size:200% 100%;animation:sk 1.2s linear infinite}
+  @keyframes sk{to{background-position:-200% 0}}
+
+  /* FOOTER */
+  footer{position:relative;padding:72px 0 0;background:linear-gradient(180deg,#0B1330 0%,#060B22 100%);color:#E1E6F2;overflow:hidden;isolation:isolate}
+  footer::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#2F7DFB 0%,#7AB3FF 50%,#2F7DFB 100%);z-index:1}
+  footer::after{content:"";position:absolute;right:-120px;top:-160px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(47,125,251,0.22),transparent 70%);pointer-events:none}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px;position:relative;z-index:1}
+  .foot-brand .logo img{filter:brightness(0) invert(1);height:30px}
+  .foot-brand p{margin:20px 0 26px;color:rgba(255,255,255,0.62);font-size:13.5px;line-height:1.65;max-width:280px}
+  .socials{display:flex;gap:10px}
+  .soc{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.05);color:#fff;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.1);transition:background .2s, border-color .2s, transform .2s, box-shadow .2s}
+  .soc:hover{background:linear-gradient(135deg,var(--blue),var(--blue-600));border-color:transparent;transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(47,125,251,0.5)}
+  .foot-col h5{margin:0 0 18px;font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#fff;display:inline-flex;align-items:center;gap:8px}
+  .foot-col h5::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px rgba(47,125,251,0.18)}
+  .foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+  .foot-col a{color:rgba(255,255,255,0.65);font-size:13.5px;display:inline-flex;align-items:center;gap:6px;transition:color .15s, transform .15s}
+  .foot-col a::before{content:"→";font-size:11px;opacity:0;transition:opacity .15s}
+  .foot-col a:hover{color:#fff;transform:translateX(3px)}
+  .foot-col a:hover::before{opacity:0.55}
+  .foot-bottom{margin-top:64px;padding:22px 0 24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12.5px;color:rgba(255,255,255,0.5);position:relative;z-index:1}
+  .foot-bottom a{color:rgba(255,255,255,0.6);transition:color .15s}
+  .foot-bottom a:hover{color:#fff}
+  .foot-bottom-links{display:flex;gap:22px;flex-wrap:wrap}
+
+  @media (max-width:980px){
+    .nav-links{gap:20px}
+    .nav-links a:not(.btn){display:none}
+    .col-grid,.help-skeleton{grid-template-columns:1fr;max-width:460px;margin:0 auto}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-bottom{margin-top:48px;flex-direction:column;align-items:flex-start;gap:14px;text-align:left}
+    .foot-bottom-links{gap:18px}
+  }
+  @media (max-width:560px){
+    .help-hero{padding:64px 0 76px}
+    footer{padding-top:48px}
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+    .foot-brand p{max-width:none}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important}
+    [data-reveal]{opacity:1 !important;transform:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="KclautX">
+      <img src="kclautx-logo.png" alt="KclautX" />
+    </a>
+    <nav class="nav-links">
+      <a href="/buy-sell-crypto/">Trade Cryptocurrency</a>
+      <a href="/gift-card-exchange/">Trade Giftcards</a>
+      <a href="/bill-payment/">Pay Bills</a>
+      <a href="/blog">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="help-hero">
+  <div class="inner">
+    <p class="eyebrow">KclautX Help Center</p>
+    <h1>Find answers to your questions</h1>
+    <p>Browse our guides on accounts, trading, payments and more, or search to jump straight to an answer.</p>
+    <div class="help-search">
+      <span class="si">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </span>
+      <input id="help-search-input" type="search" placeholder="Search the help center…" autocomplete="off" />
+    </div>
+  </div>
+</section>
+
+<!-- MAIN (populated by JS) -->
+<main class="help-main">
+  <div class="wrap" id="help-root">
+    <div class="help-state">Loading…</div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="/" class="logo" aria-label="KclautX">
+          <img src="kclautx-logo.png" alt="KclautX" />
+        </a>
+        <p>Your trusted exchange for crypto, giftcards and bills built for Nigeria, ready for the world.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/kclautx" class="soc" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://x.com/kclautx" class="soc" aria-label="X (Twitter)" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l-6 8 6 8h-3l-4.5-6L5 20H3l6.5-8L3 4h3l4.5 6L15 4h3z"/></svg></a>
+          <a href="https://t.me/kclautx" class="soc" aria-label="Telegram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L2 11l6 2 2 7 4-4 5 5z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul><li><a href="/about">About Us</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/cookie">Cookie Policy</a></li>
+          <li><a href="/aml-kyc">AML/KYC Policy</a></li>
+          <li><a href="/risk-disclosure">Risk Disclosure</a></li>
+          <li><a href="/account-restriction">Account Restriction</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="/help">Help Center</a></li>
+          <li><a href="/support">Contact Support</a></li>
+          <li><a href="mailto:support@kclautx.com">support@kclautx.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>&copy; <span class="footYear">2026</span> KclautX. All rights reserved.</div>
+      <div class="foot-bottom-links">
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/help">Help</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Markdown rendering (article bodies) -->
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+<script>
+  // Nav scroll style
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 4) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  });
+  // Footer year
+  document.querySelectorAll('.footYear').forEach(el => el.textContent = new Date().getFullYear());
+
+  // Cursor glow
+  (function(){
+    if (matchMedia('(hover:none)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const g = document.createElement('div'); g.className = 'cursor-glow'; document.body.appendChild(g);
+    let x=0,y=0,tx=0,ty=0;
+    document.addEventListener('mousemove', (e) => { tx=e.clientX; ty=e.clientY; g.classList.add('on'); });
+    document.addEventListener('mouseleave', () => g.classList.remove('on'));
+    const loop = () => { x += (tx-x)*0.15; y += (ty-y)*0.15; g.style.transform = `translate(${x}px, ${y}px) translate(-50%,-50%)`; requestAnimationFrame(loop); };
+    loop();
+  })();
+</script>
+
+<!-- Help Center app -->
+<script>
+(function(){
+  const API = 'https://api.kclautx.com'; // live
+  // const API = 'http://localhost:8000'; // local testing
+  const PAGE = location.pathname; // keeps clean (/help) or file (/help.html) URLs working
+  const root = document.getElementById('help-root');
+  const searchInput = document.getElementById('help-search-input');
+
+  const linkCollection = (slug) => `${PAGE}?c=${encodeURIComponent(slug)}`;
+  const linkArticle = (slug) => `${PAGE}?a=${encodeURIComponent(slug)}`;
+  const homeHref = PAGE;
+
+  const el = (tag, props = {}, children = []) => {
+    const n = document.createElement(tag);
+    Object.entries(props).forEach(([k, v]) => {
+      if (k === 'class') n.className = v;
+      else if (k === 'text') n.textContent = v;
+      else if (k === 'html') n.innerHTML = v;
+      else n.setAttribute(k, v);
+    });
+    (Array.isArray(children) ? children : [children]).forEach(c => c && n.appendChild(c));
+    return n;
+  };
+
+  const chevRight = () =>
+    `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+
+  async function getJSON(path){
+    const res = await fetch(`${API}${path}`, { headers: { 'Accept': 'application/json' } });
+    const json = await res.json();
+    if (!res.ok || json.status === 'error') throw new Error(json.message || 'Request failed');
+    return json.data;
+  }
+
+  const stateEl = (msg) => { root.innerHTML = ''; root.appendChild(el('div', { class: 'help-state', text: msg })); };
+
+  function skeleton(){
+    root.innerHTML = '';
+    const grid = el('div', { class: 'help-skeleton' });
+    for (let i = 0; i < 6; i++) grid.appendChild(el('div', { class: 'sk-card' }));
+    root.appendChild(grid);
+  }
+
+  function breadcrumb(trail){
+    const bc = el('nav', { class: 'breadcrumb' });
+    trail.forEach((item, i) => {
+      if (i > 0) bc.appendChild(el('span', { class: 'sep', text: '/' }));
+      if (item.href) bc.appendChild(el('a', { href: item.href, text: item.label }));
+      else bc.appendChild(el('span', { class: 'cur', text: item.label }));
+    });
+    return bc;
+  }
+
+  /* ── HOME: collections grid ── */
+  let allCollections = [];
+  async function renderHome(){
+    searchInput.style.display = '';
+    skeleton();
+    try {
+      allCollections = await getJSON('/help-center/collections');
+    } catch (e) {
+      stateEl('Could not load the help center right now. Please try again later.');
+      return;
+    }
+    paintCollections(allCollections);
+  }
+
+  function paintCollections(list){
+    root.innerHTML = '';
+    if (!list.length){
+      root.appendChild(el('div', { class: 'help-state', text: 'No articles published yet. Check back soon.' }));
+      return;
+    }
+    const grid = el('div', { class: 'col-grid' });
+    list.forEach(c => {
+      const card = el('a', { class: 'col-card', href: linkCollection(c.slug) });
+      const icon = el('div', { class: 'ic' });
+      if (c.icon && c.icon.trim()) icon.textContent = c.icon.trim();
+      else icon.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 015.8 1c0 2-3 2.5-3 2.5"/><line x1="12" y1="17" x2="12" y2="17"/></svg>`;
+      card.appendChild(icon);
+      card.appendChild(el('h3', { text: c.title }));
+      if (c.description) card.appendChild(el('p', { text: c.description }));
+      const n = c.article_count ?? 0;
+      card.appendChild(el('p', { class: 'count', text: `${n} ${n === 1 ? 'article' : 'articles'}` }));
+      grid.appendChild(card);
+    });
+    root.appendChild(grid);
+  }
+
+  // live search filters collection cards on the home view
+  searchInput.addEventListener('input', () => {
+    if (new URLSearchParams(location.search).toString()) return; // only on home
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) return paintCollections(allCollections);
+    paintCollections(allCollections.filter(c =>
+      (c.title || '').toLowerCase().includes(q) ||
+      (c.description || '').toLowerCase().includes(q)
+    ));
+  });
+
+  /* ── COLLECTION: article rows ── */
+  async function renderCollection(slug){
+    searchInput.style.display = 'none';
+    stateEl('Loading…');
+    let data;
+    try { data = await getJSON(`/help-center/collections/${encodeURIComponent(slug)}`); }
+    catch (e) { return notFound('Collection not found', e); }
+
+    const { collection, articles } = data;
+    document.title = `${collection.title} | KclautX Help`;
+    root.innerHTML = '';
+    root.appendChild(breadcrumb([
+      { label: 'All collections', href: homeHref },
+      { label: collection.title },
+    ]));
+
+    const head = el('div', { class: 'collection-head' });
+    head.appendChild(el('h1', { text: collection.title }));
+    if (collection.description) head.appendChild(el('p', { text: collection.description }));
+    root.appendChild(head);
+
+    if (!articles.length){
+      root.appendChild(el('div', { class: 'help-state', text: 'No articles in this collection yet.' }));
+      return;
+    }
+    const listEl = el('div', { class: 'article-list' });
+    articles.forEach(a => {
+      const row = el('a', { class: 'article-row', href: linkArticle(a.slug) });
+      const left = el('div');
+      left.appendChild(el('span', { class: 't', text: a.title }));
+      if (a.subtitle) left.appendChild(el('span', { class: 's', text: a.subtitle }));
+      row.appendChild(left);
+      row.appendChild(el('span', { class: 'chev', html: chevRight() }));
+      listEl.appendChild(row);
+    });
+    root.appendChild(listEl);
+  }
+
+  /* ── ARTICLE: full page ── */
+  async function renderArticle(slug){
+    searchInput.style.display = 'none';
+    stateEl('Loading…');
+    let data;
+    try { data = await getJSON(`/help-center/articles/${encodeURIComponent(slug)}`); }
+    catch (e) { return notFound('Article not found', e); }
+
+    const { article, collection } = data;
+    document.title = `${article.title} | KclautX Help`;
+    root.innerHTML = '';
+
+    const trail = [{ label: 'All collections', href: homeHref }];
+    if (collection) trail.push({ label: collection.title, href: linkCollection(collection.slug) });
+    trail.push({ label: article.title });
+    root.appendChild(breadcrumb(trail));
+
+    const page = el('article', { class: 'article-page' });
+    page.appendChild(el('h1', { text: article.title }));
+    if (article.subtitle) page.appendChild(el('p', { class: 'subtitle', text: article.subtitle }));
+    page.appendChild(el('hr', { class: 'div' }));
+
+    const body = el('div', { class: 'article-body' });
+    // Article body is authored as HTML in the admin WYSIWYG editor; sanitize before injecting.
+    const rawHtml = article.body || '';
+    body.innerHTML = window.DOMPurify ? DOMPurify.sanitize(rawHtml) : rawHtml;
+    page.appendChild(body);
+
+    page.appendChild(buildFeedback());
+    root.appendChild(page);
+  }
+
+  function buildFeedback(){
+    const wrap = el('div', { class: 'feedback' });
+    wrap.appendChild(el('p', { text: 'Did this answer your question?' }));
+    const faces = el('div', { class: 'faces' });
+    ['😞', '😐', '😄'].forEach(emoji => {
+      const b = el('button', { class: 'face', type: 'button', 'aria-label': 'feedback' , text: emoji });
+      b.addEventListener('click', () => {
+        wrap.innerHTML = '';
+        wrap.appendChild(el('p', { class: 'thanks', text: 'Thanks for your feedback! 🙌' }));
+      });
+      faces.appendChild(b);
+    });
+    wrap.appendChild(faces);
+    return wrap;
+  }
+
+  function notFound(msg, err){
+    console.error(err);
+    root.innerHTML = '';
+    root.appendChild(breadcrumb([{ label: 'All collections', href: homeHref }, { label: 'Not found' }]));
+    root.appendChild(el('a', { class: 'back-link', href: homeHref, html: '← Back to help center' }));
+    root.appendChild(el('div', { class: 'help-state', text: msg }));
+  }
+
+  // Route by query string
+  const params = new URLSearchParams(location.search);
+  if (params.get('a')) renderArticle(params.get('a'));
+  else if (params.get('c')) renderCollection(params.get('c'));
+  else renderHome();
+})();
+</script>
+<script src="modern.js?v=20260625b"></script>
+</body>
+</html>
