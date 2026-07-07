@@ -19,6 +19,21 @@
     window.dataLayer.push({ event: t.getAttribute('data-gtm-event'), store: t.getAttribute('data-store') || undefined });
   });
 
+  // ---- Google Analytics 4 (gtag.js) ----
+  // Loaded here so every page that includes modern.js is tracked from one place.
+  // NOTE: if you later enable GTM above, configure GA4 inside the container and
+  // clear GA4_ID here to avoid double-counting.
+  var GA4_ID = 'G-EEDTGED9H1';
+  if (GA4_ID) {
+    var ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+    document.head.appendChild(ga);
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA4_ID);
+  }
+
   // Curtain on load
   const curtain = document.createElement('div');
   curtain.className = 'curtain';
