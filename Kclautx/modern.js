@@ -4,7 +4,7 @@
   // Set GTM_ID to your container (e.g. 'GTM-XXXXXXX') to enable site-wide tracking.
   // GA4 is configured inside the GTM container — no extra code needed here.
   // Left blank so nothing loads until a real container ID is provided.
-  var GTM_ID = '';
+  var GTM_ID = 'GTM-55BDQJN8';
   window.dataLayer = window.dataLayer || [];
   if (GTM_ID) {
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
