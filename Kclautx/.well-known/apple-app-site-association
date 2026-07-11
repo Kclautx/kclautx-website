@@ -5,6 +5,7 @@
       {
         "appID": "REPLACE_TEAMID.com.kclautx.app",
         "paths": [
+          "/r/*",
           "/app/*",
           "/buy-sell-crypto/*",
           "/gift-card-exchange/*",
